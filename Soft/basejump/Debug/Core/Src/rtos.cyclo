@@ -1,0 +1,3 @@
+../Core/Src/rtos.c:21:10:initRTOS	1
+../Core/Src/rtos.c:42:6:StartTask01	1
+../Core/Src/rtos.c:47:6:StartTask02	1

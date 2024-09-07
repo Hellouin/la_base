@@ -5,6 +5,9 @@
  *      Author: hellm
  */
 
+#include "stdint.h"
+
+
 #ifndef INC_TOOL_H_
 #define INC_TOOL_H_
 
