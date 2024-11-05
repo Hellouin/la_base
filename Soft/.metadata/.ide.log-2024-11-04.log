@@ -1,0 +1,160 @@
+2024-11-04 20:13:25,114 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] 
+2024-11-04 20:13:27,083 [INFO] ProjectBuilder:5097 - Time for Generating toolchain IDE Files: 2666mS.
+2024-11-04 20:13:27,083 [INFO] ProjectBuilder:3107 - Time for Copy CMSIS : 0mS.
+2024-11-04 20:13:27,093 [INFO] ProjectBuilder:3107 - Time for Copy CMSIS : 0mS.
+2024-11-04 20:19:18,771 [ERROR] RtosPanel:558 - Can not restore the selected Tab for FREERTOS(A reason can be that the tab is no more available.)
+2024-11-04 20:19:32,380 [INFO] TasksAndQueuesTab:757 - Static
+2024-11-04 20:19:33,459 [INFO] EditThreadDialog:704 - RAM SIZE (in KB): 128
+2024-11-04 20:19:33,459 [INFO] EditThreadDialog:706 - RAM SIZE (in words): 32768
+2024-11-04 20:19:34,523 [INFO] TasksAndQueuesTab:757 - Static
+2024-11-04 20:19:34,523 [INFO] TasksAndQueuesTab:757 - Dynamic
+2024-11-04 20:19:34,523 [WARN] TasksAndQueuesTab:763 - 128 128
+2024-11-04 20:19:34,523 [WARN] TasksAndQueuesTab:775 - max value is: 750.0
+2024-11-04 20:19:35,604 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 555060960 Bytes (891289600)
+2024-11-04 20:19:35,674 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 581370736 Bytes (891289600)
+2024-11-04 20:19:36,037 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 381603872 Bytes (891289600)
+2024-11-04 20:19:37,486 [INFO] BlockDiagram:2766 - set Specific Code input for plugin: SPI
+2024-11-04 20:19:37,486 [INFO] BlockDiagram:2766 - set Specific Code input for plugin: FREERTOS
+2024-11-04 20:19:37,486 [INFO] BlockDiagram:2766 - set Specific Code input for plugin: SYS
+2024-11-04 20:19:37,486 [INFO] BlockDiagram:2766 - set Specific Code input for plugin: RCC
+2024-11-04 20:19:37,486 [INFO] BlockDiagram:2766 - set Specific Code input for plugin: NVIC
+2024-11-04 20:19:37,486 [INFO] BlockDiagram:2766 - set Specific Code input for plugin: USART
+2024-11-04 20:19:37,486 [INFO] BlockDiagram:2766 - set Specific Code input for plugin: GPIO
+2024-11-04 20:19:37,487 [INFO] CodeGenerator:807 - code generatio: config db path: C:\ST\STM32CubeIDE_1.14.0\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.12.1.202409122256\\db\
+2024-11-04 20:19:37,534 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\license.tmp_save
+2024-11-04 20:19:37,587 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\license.tmp
+2024-11-04 20:19:37,615 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\gpio.tmp_save
+2024-11-04 20:19:37,673 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\gpio.tmp
+2024-11-04 20:19:37,783 [INFO] Middleware:1439 - No code input for Bsp Dependency
+2024-11-04 20:19:37,788 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_inc.tmp_save
+2024-11-04 20:19:37,841 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_inc.tmp
+2024-11-04 20:19:37,843 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_vars.tmp_save
+2024-11-04 20:19:37,893 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_vars.tmp
+2024-11-04 20:19:37,895 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_pfp.tmp_save
+2024-11-04 20:19:37,949 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_pfp.tmp
+2024-11-04 20:19:37,952 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_obj_creat.tmp_save
+2024-11-04 20:19:38,010 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_obj_creat.tmp
+2024-11-04 20:19:38,012 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_kernelStart.tmp_save
+2024-11-04 20:19:38,052 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_kernelStart.tmp
+2024-11-04 20:19:38,054 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_default_thread.tmp_save
+2024-11-04 20:19:38,099 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_default_thread.tmp
+2024-11-04 20:19:38,101 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_threads.tmp_save
+2024-11-04 20:19:38,148 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_threads.tmp
+2024-11-04 20:19:38,156 [INFO] Middleware:1439 - No code input for Bsp Dependency
+2024-11-04 20:19:38,162 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_inc.tmp_save
+2024-11-04 20:19:38,205 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_inc.tmp
+2024-11-04 20:19:38,209 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_vars.tmp_save
+2024-11-04 20:19:38,244 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_vars.tmp
+2024-11-04 20:19:38,247 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_pfp.tmp_save
+2024-11-04 20:19:38,283 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_pfp.tmp
+2024-11-04 20:19:38,292 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_obj_creat.tmp_save
+2024-11-04 20:19:38,329 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_obj_creat.tmp
+2024-11-04 20:19:38,333 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_kernelStart.tmp_save
+2024-11-04 20:19:38,371 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_kernelStart.tmp
+2024-11-04 20:19:38,375 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_default_thread.tmp_save
+2024-11-04 20:19:38,411 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_default_thread.tmp
+2024-11-04 20:19:38,416 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_threads.tmp_save
+2024-11-04 20:19:38,452 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_threads.tmp
+2024-11-04 20:19:38,462 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\Core\Inc\FreeRTOSConfig.h_save
+2024-11-04 20:19:38,513 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\Core\Inc\FreeRTOSConfig.h
+2024-11-04 20:19:38,525 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\Core\Src\freertos.c_save
+2024-11-04 20:19:38,583 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\Core\Src\freertos.c
+2024-11-04 20:19:38,604 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\Core\Src\stm32l4xx_it.c_save
+2024-11-04 20:19:38,657 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\Core\Src\stm32l4xx_it.c
+2024-11-04 20:19:38,661 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\Core\Inc\stm32l4xx_it.h_save
+2024-11-04 20:19:38,702 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\Core\Inc\stm32l4xx_it.h
+2024-11-04 20:19:38,721 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\Core\Src\stm32l4xx_hal_msp.c_save
+2024-11-04 20:19:38,788 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\Core\Src\stm32l4xx_hal_msp.c
+2024-11-04 20:19:38,791 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\system.tmp_save
+2024-11-04 20:19:38,834 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\system.tmp
+2024-11-04 20:19:38,845 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\Core\Src\stm32l4xx_hal_timebase_tim.c_save
+2024-11-04 20:19:38,889 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\Core\Src\stm32l4xx_hal_timebase_tim.c
+2024-11-04 20:19:38,903 [INFO] CodeEngine:311 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\Core\Inc\stm32l4xx_hal_conf.h_save
+2024-11-04 20:19:38,967 [INFO] CodeEngine:335 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\Core\Inc\stm32l4xx_hal_conf.h
+2024-11-04 20:19:39,010 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\Core\Inc\main.h_save
+2024-11-04 20:19:39,058 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\Core\Inc\main.h
+2024-11-04 20:19:39,068 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\Core\Src\main.c_save
+2024-11-04 20:19:39,158 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\Core\Src\main.c
+2024-11-04 20:19:39,483 [INFO] ProjectBuilder:3249 - Time for Copy HAL[1] : 177mS.
+2024-11-04 20:19:39,487 [INFO] ProjectBuilder:4828 - Project Generator version: 4.5.0-B34
+2024-11-04 20:19:39,534 [INFO] ConfigFileManager:1531 - The Die is : DIE415
+2024-11-04 20:19:40,132 [INFO] ProjectBuilder:5097 - Time for Generating toolchain IDE Files: 645mS.
+2024-11-04 20:19:40,133 [INFO] ProjectBuilder:3107 - Time for Copy CMSIS : 1mS.
+2024-11-04 20:19:40,156 [INFO] ProjectBuilder:3107 - Time for Copy CMSIS : 0mS.
+2024-11-04 20:19:58,438 [INFO] TasksAndQueuesTab:757 - Static
+2024-11-04 20:20:03,147 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 452074648 Bytes (891289600)
+2024-11-04 20:20:03,219 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 477964808 Bytes (891289600)
+2024-11-04 20:20:03,565 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 520756376 Bytes (891289600)
+2024-11-04 20:20:11,088 [INFO] BlockDiagram:2766 - set Specific Code input for plugin: SPI
+2024-11-04 20:20:11,088 [INFO] BlockDiagram:2766 - set Specific Code input for plugin: FREERTOS
+2024-11-04 20:20:11,088 [INFO] BlockDiagram:2766 - set Specific Code input for plugin: SYS
+2024-11-04 20:20:11,088 [INFO] BlockDiagram:2766 - set Specific Code input for plugin: RCC
+2024-11-04 20:20:11,088 [INFO] BlockDiagram:2766 - set Specific Code input for plugin: NVIC
+2024-11-04 20:20:11,088 [INFO] BlockDiagram:2766 - set Specific Code input for plugin: USART
+2024-11-04 20:20:11,088 [INFO] BlockDiagram:2766 - set Specific Code input for plugin: GPIO
+2024-11-04 20:20:11,088 [INFO] CodeGenerator:807 - code generatio: config db path: C:\ST\STM32CubeIDE_1.14.0\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.12.1.202409122256\\db\
+2024-11-04 20:20:11,128 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\license.tmp_save
+2024-11-04 20:20:11,177 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\license.tmp
+2024-11-04 20:20:11,201 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\gpio.tmp_save
+2024-11-04 20:20:11,246 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\gpio.tmp
+2024-11-04 20:20:11,352 [INFO] Middleware:1439 - No code input for Bsp Dependency
+2024-11-04 20:20:11,358 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_inc.tmp_save
+2024-11-04 20:20:11,407 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_inc.tmp
+2024-11-04 20:20:11,409 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_vars.tmp_save
+2024-11-04 20:20:11,460 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_vars.tmp
+2024-11-04 20:20:11,463 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_pfp.tmp_save
+2024-11-04 20:20:11,500 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_pfp.tmp
+2024-11-04 20:20:11,503 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_obj_creat.tmp_save
+2024-11-04 20:20:11,545 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_obj_creat.tmp
+2024-11-04 20:20:11,547 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_kernelStart.tmp_save
+2024-11-04 20:20:11,578 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_kernelStart.tmp
+2024-11-04 20:20:11,581 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_default_thread.tmp_save
+2024-11-04 20:20:11,616 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_default_thread.tmp
+2024-11-04 20:20:11,618 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_threads.tmp_save
+2024-11-04 20:20:11,654 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_threads.tmp
+2024-11-04 20:20:11,662 [INFO] Middleware:1439 - No code input for Bsp Dependency
+2024-11-04 20:20:11,668 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_inc.tmp_save
+2024-11-04 20:20:11,712 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_inc.tmp
+2024-11-04 20:20:11,716 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_vars.tmp_save
+2024-11-04 20:20:11,749 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_vars.tmp
+2024-11-04 20:20:11,752 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_pfp.tmp_save
+2024-11-04 20:20:11,790 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_pfp.tmp
+2024-11-04 20:20:11,801 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_obj_creat.tmp_save
+2024-11-04 20:20:11,835 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_obj_creat.tmp
+2024-11-04 20:20:11,839 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_kernelStart.tmp_save
+2024-11-04 20:20:11,871 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_kernelStart.tmp
+2024-11-04 20:20:11,875 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_default_thread.tmp_save
+2024-11-04 20:20:11,907 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_default_thread.tmp
+2024-11-04 20:20:11,910 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_threads.tmp_save
+2024-11-04 20:20:11,945 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\rtos_threads.tmp
+2024-11-04 20:20:11,956 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\Core\Inc\FreeRTOSConfig.h_save
+2024-11-04 20:20:12,005 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\Core\Inc\FreeRTOSConfig.h
+2024-11-04 20:20:12,016 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\Core\Src\freertos.c_save
+2024-11-04 20:20:12,054 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\Core\Src\freertos.c
+2024-11-04 20:20:12,069 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\Core\Src\stm32l4xx_it.c_save
+2024-11-04 20:20:12,123 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\Core\Src\stm32l4xx_it.c
+2024-11-04 20:20:12,127 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\Core\Inc\stm32l4xx_it.h_save
+2024-11-04 20:20:12,163 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\Core\Inc\stm32l4xx_it.h
+2024-11-04 20:20:12,180 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\Core\Src\stm32l4xx_hal_msp.c_save
+2024-11-04 20:20:12,237 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\Core\Src\stm32l4xx_hal_msp.c
+2024-11-04 20:20:12,240 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\system.tmp_save
+2024-11-04 20:20:12,277 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\MXTmpFiles\system.tmp
+2024-11-04 20:20:12,291 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\Core\Src\stm32l4xx_hal_timebase_tim.c_save
+2024-11-04 20:20:12,342 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\Core\Src\stm32l4xx_hal_timebase_tim.c
+2024-11-04 20:20:12,356 [INFO] CodeEngine:311 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\Core\Inc\stm32l4xx_hal_conf.h_save
+2024-11-04 20:20:12,415 [INFO] CodeEngine:335 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\Core\Inc\stm32l4xx_hal_conf.h
+2024-11-04 20:20:12,448 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\Core\Inc\main.h_save
+2024-11-04 20:20:12,498 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\Core\Inc\main.h
+2024-11-04 20:20:12,508 [INFO] CodeEngine:255 - oldGeneratedFile, C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\Core\Src\main.c_save
+2024-11-04 20:20:12,597 [INFO] CodeEngine:279 - Generated code: C:\Users\hellm\Desktop\ENSI\la_base\Soft\basile\Core\Src\main.c
+2024-11-04 20:20:12,902 [INFO] ProjectBuilder:3249 - Time for Copy HAL[1] : 158mS.
+2024-11-04 20:20:12,904 [INFO] ProjectBuilder:4828 - Project Generator version: 4.5.0-B34
+2024-11-04 20:20:12,951 [INFO] ConfigFileManager:1531 - The Die is : DIE415
+2024-11-04 20:20:13,440 [INFO] ProjectBuilder:5097 - Time for Generating toolchain IDE Files: 536mS.
+2024-11-04 20:20:13,441 [INFO] ProjectBuilder:3107 - Time for Copy CMSIS : 1mS.
+2024-11-04 20:20:13,460 [INFO] ProjectBuilder:3107 - Time for Copy CMSIS : 0mS.
+2024-11-04 21:52:23,110 [INFO] WebApp:189 - Connection lost
+2024-11-04 21:52:23,357 [INFO] WebApp:186 - Connection restablished
+2024-11-04 22:03:18,762 [INFO] WebApp:189 - Connection lost
+2024-11-04 22:03:19,488 [INFO] WebApp:186 - Connection restablished
+2024-11-04 23:09:51,182 [INFO] WebApp:189 - Connection lost

@@ -1,0 +1,146 @@
+09:51:32 **** Incremental Build of configuration Debug for project STM32_HAL_LWIP_ENC28J60-main ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/enc28j60.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L476xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../LWIP -I../LWIP/App -I../LWIP/Target -I../Third_Party/LwIP/src/include -I../Third_Party/LwIP/src/include/compat/posix -I../Third_Party/LwIP/src/include/compat/posix/arpa -I../Third_Party/LwIP/src/include/compat/posix/net -I../Third_Party/LwIP/src/include/compat/posix/sys -I../Third_Party/LwIP/src/include/compat/stdc -I../Third_Party/LwIP/src/include/lwip -I../Third_Party/LwIP/src/include/lwip/apps -I../Third_Party/LwIP/src/include/lwip/priv -I../Third_Party/LwIP/src/include/lwip/prot -I../Third_Party/LwIP/src/include/netif -I../Third_Party/LwIP/src/include/netif/ppp -I../Third_Party/LwIP/system -I../Third_Party/LwIP/system/arch -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/enc28j60.d" -MT"Core/Src/enc28j60.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/enc28j60.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L476xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../LWIP -I../LWIP/App -I../LWIP/Target -I../Third_Party/LwIP/src/include -I../Third_Party/LwIP/src/include/compat/posix -I../Third_Party/LwIP/src/include/compat/posix/arpa -I../Third_Party/LwIP/src/include/compat/posix/net -I../Third_Party/LwIP/src/include/compat/posix/sys -I../Third_Party/LwIP/src/include/compat/stdc -I../Third_Party/LwIP/src/include/lwip -I../Third_Party/LwIP/src/include/lwip/apps -I../Third_Party/LwIP/src/include/lwip/priv -I../Third_Party/LwIP/src/include/lwip/prot -I../Third_Party/LwIP/src/include/netif -I../Third_Party/LwIP/src/include/netif/ppp -I../Third_Party/LwIP/system -I../Third_Party/LwIP/system/arch -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L476xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../LWIP -I../LWIP/App -I../LWIP/Target -I../Third_Party/LwIP/src/include -I../Third_Party/LwIP/src/include/compat/posix -I../Third_Party/LwIP/src/include/compat/posix/arpa -I../Third_Party/LwIP/src/include/compat/posix/net -I../Third_Party/LwIP/src/include/compat/posix/sys -I../Third_Party/LwIP/src/include/compat/stdc -I../Third_Party/LwIP/src/include/lwip -I../Third_Party/LwIP/src/include/lwip/apps -I../Third_Party/LwIP/src/include/lwip/priv -I../Third_Party/LwIP/src/include/lwip/prot -I../Third_Party/LwIP/src/include/netif -I../Third_Party/LwIP/src/include/netif/ppp -I../Third_Party/LwIP/system -I../Third_Party/LwIP/system/arch -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/syscalls.d" -MT"Core/Src/syscalls.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/syscalls.o"
+arm-none-eabi-gcc "../Core/Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L476xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../LWIP -I../LWIP/App -I../LWIP/Target -I../Third_Party/LwIP/src/include -I../Third_Party/LwIP/src/include/compat/posix -I../Third_Party/LwIP/src/include/compat/posix/arpa -I../Third_Party/LwIP/src/include/compat/posix/net -I../Third_Party/LwIP/src/include/compat/posix/sys -I../Third_Party/LwIP/src/include/compat/stdc -I../Third_Party/LwIP/src/include/lwip -I../Third_Party/LwIP/src/include/lwip/apps -I../Third_Party/LwIP/src/include/lwip/priv -I../Third_Party/LwIP/src/include/lwip/prot -I../Third_Party/LwIP/src/include/netif -I../Third_Party/LwIP/src/include/netif/ppp -I../Third_Party/LwIP/system -I../Third_Party/LwIP/system/arch -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/sysmem.d" -MT"Core/Src/sysmem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/sysmem.o"
+arm-none-eabi-gcc "../Core/Src/tcp_echo.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L476xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../LWIP -I../LWIP/App -I../LWIP/Target -I../Third_Party/LwIP/src/include -I../Third_Party/LwIP/src/include/compat/posix -I../Third_Party/LwIP/src/include/compat/posix/arpa -I../Third_Party/LwIP/src/include/compat/posix/net -I../Third_Party/LwIP/src/include/compat/posix/sys -I../Third_Party/LwIP/src/include/compat/stdc -I../Third_Party/LwIP/src/include/lwip -I../Third_Party/LwIP/src/include/lwip/apps -I../Third_Party/LwIP/src/include/lwip/priv -I../Third_Party/LwIP/src/include/lwip/prot -I../Third_Party/LwIP/src/include/netif -I../Third_Party/LwIP/src/include/netif/ppp -I../Third_Party/LwIP/system -I../Third_Party/LwIP/system/arch -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/tcp_echo.d" -MT"Core/Src/tcp_echo.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/tcp_echo.o"
+In file included from ../LWIP/App/lwip.h:29,
+                 from ../Core/Inc/main.h:34,
+                 from ../LWIP/Target/lwipopts.h:25,
+                 from ../Third_Party/LwIP/src/include/lwip/opt.h:51,
+                 from ../Third_Party/LwIP/src/include/lwip/errno.h:40,
+                 from ../Third_Party/LwIP/src/include/compat/stdc/errno.h:33,
+                 from ../Core/Src/sysmem.c:24:
+../Third_Party/LwIP/src/include/lwip/mem.h:67:9: error: unknown type name 'u16_t'
+   67 | typedef u16_t mem_size_t;
+      |         ^~~~~
+In file included from ../Third_Party/LwIP/src/include/lwip/memp.h:58,
+                 from ../LWIP/App/lwip.h:30:
+../Third_Party/LwIP/src/include/lwip/priv/memp_priv.h:119:3: error: unknown type name 'u16_t'
+  119 |   u16_t size;
+      |   ^~~~~
+../Third_Party/LwIP/src/include/lwip/priv/memp_priv.h:123:3: error: unknown type name 'u16_t'
+  123 |   u16_t num;
+      |   ^~~~~
+../Third_Party/LwIP/src/include/lwip/priv/memp_priv.h:126:3: error: unknown type name 'u8_t'
+  126 |   u8_t *base;
+      |   ^~~~
+In file included from ../LWIP/App/lwip.h:29,
+                 from ../Core/Inc/main.h:34,
+                 from ../LWIP/Target/lwipopts.h:25,
+                 from ../Third_Party/LwIP/src/include/lwip/opt.h:51,
+                 from ../Third_Party/LwIP/src/include/lwip/errno.h:40,
+                 from ../Third_Party/LwIP/src/include/compat/stdc/errno.h:33,
+                 from ../Core/Src/syscalls.c:26:
+../Third_Party/LwIP/src/include/lwip/mem.h:67:9: error: unknown type name 'u16_t'
+   67 | typedef u16_t mem_size_t;
+      |         ^~~~~
+In file included from ../Core/Src/enc28j60.c:43:
+../Core/Inc/enc28j60.h:101:25: error: expected identifier before numeric constant
+  101 | #define ERR_OK          0    /* No error, everything OK. */
+      |                         ^
+../Third_Party/LwIP/src/include/lwip/err.h:55:3: note: in expansion of macro 'ERR_OK'
+   55 |   ERR_OK         = 0,
+      |   ^~~~~~
+In file included from ../Third_Party/LwIP/src/include/lwip/memp.h:58,
+                 from ../LWIP/App/lwip.h:30:
+../Third_Party/LwIP/src/include/lwip/priv/memp_priv.h:119:3: error: unknown type name 'u16_t'
+  119 |   u16_t size;
+      |   ^~~~~
+../Third_Party/LwIP/src/include/lwip/priv/memp_priv.h:123:3: error: unknown type name 'u16_t'
+  123 |   u16_t num;
+      |   ^~~~~
+../Third_Party/LwIP/src/include/lwip/priv/memp_priv.h:126:3: error: unknown type name 'u8_t'
+  126 |   u8_t *base;
+      |   ^~~~
+make: *** [Core/Src/subdir.mk:40: Core/Src/enc28j60.o] Error 1
+make: *** Waiting for unfinished jobs....
+In file included from ../Third_Party/LwIP/src/include/netif/ethernet.h:46,
+                 from ../Third_Party/LwIP/src/include/netif/etharp.h:3,
+                 from ../LWIP/App/lwip.h:31:
+../Third_Party/LwIP/src/include/lwip/pbuf.h:93:20: error: 'PBUF_LINK_ENCAPSULATION_HLEN' undeclared here (not in a function)
+   93 |   PBUF_TRANSPORT = PBUF_LINK_ENCAPSULATION_HLEN + PBUF_LINK_HLEN + PBUF_IP_HLEN + PBUF_TRANSPORT_HLEN,
+      |                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../Third_Party/LwIP/src/include/netif/ethernet.h:46,
+                 from ../Third_Party/LwIP/src/include/netif/etharp.h:3,
+                 from ../LWIP/App/lwip.h:31:
+../Third_Party/LwIP/src/include/lwip/pbuf.h:93:20: error: 'PBUF_LINK_ENCAPSULATION_HLEN' undeclared here (not in a function)
+   93 |   PBUF_TRANSPORT = PBUF_LINK_ENCAPSULATION_HLEN + PBUF_LINK_HLEN + PBUF_IP_HLEN + PBUF_TRANSPORT_HLEN,
+      |                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../Third_Party/LwIP/src/include/netif/ethernet.h:46,
+                 from ../Third_Party/LwIP/src/include/netif/etharp.h:3,
+                 from ../LWIP/App/lwip.h:31,
+                 from ../Core/Inc/main.h:34,
+                 from ../LWIP/Target/lwipopts.h:25,
+                 from ../Third_Party/LwIP/src/include/lwip/opt.h:51,
+                 from ../Third_Party/LwIP/src/include/lwip/debug.h:41,
+                 from ../Core/Inc/tcp_echo.h:13,
+                 from ../Core/Src/tcp_echo.c:8:
+../Third_Party/LwIP/src/include/lwip/pbuf.h:93:20: error: 'PBUF_LINK_ENCAPSULATION_HLEN' undeclared here (not in a function)
+   93 |   PBUF_TRANSPORT = PBUF_LINK_ENCAPSULATION_HLEN + PBUF_LINK_HLEN + PBUF_IP_HLEN + PBUF_TRANSPORT_HLEN,
+      |                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Third_Party/LwIP/src/include/lwip/pbuf.h:93:51: error: 'PBUF_LINK_HLEN' undeclared here (not in a function); did you mean 'PBUF_IP_HLEN'?
+   93 |   PBUF_TRANSPORT = PBUF_LINK_ENCAPSULATION_HLEN + PBUF_LINK_HLEN + PBUF_IP_HLEN + PBUF_TRANSPORT_HLEN,
+      |                                                   ^~~~~~~~~~~~~~
+      |                                                   PBUF_IP_HLEN
+../Third_Party/LwIP/src/include/lwip/pbuf.h:218:3: error: unknown type name 'LWIP_PBUF_REF_T'
+  218 |   LWIP_PBUF_REF_T ref;
+      |   ^~~~~~~~~~~~~~~
+In file included from ../Third_Party/LwIP/src/include/lwip/netif.h:46,
+                 from ../Third_Party/LwIP/src/include/netif/ethernet.h:47:
+../Third_Party/LwIP/src/include/lwip/ip_addr.h:318:9: error: unknown type name 'ip6_addr_t'
+  318 | typedef ip6_addr_t ip_addr_t;
+      |         ^~~~~~~~~~
+../Third_Party/LwIP/src/include/lwip/pbuf.h:93:51: error: 'PBUF_LINK_HLEN' undeclared here (not in a function); did you mean 'PBUF_IP_HLEN'?
+   93 |   PBUF_TRANSPORT = PBUF_LINK_ENCAPSULATION_HLEN + PBUF_LINK_HLEN + PBUF_IP_HLEN + PBUF_TRANSPORT_HLEN,
+      |                                                   ^~~~~~~~~~~~~~
+      |                                                   PBUF_IP_HLEN
+../Third_Party/LwIP/src/include/lwip/pbuf.h:218:3: error: unknown type name 'LWIP_PBUF_REF_T'
+  218 |   LWIP_PBUF_REF_T ref;
+      |   ^~~~~~~~~~~~~~~
+In file included from ../Third_Party/LwIP/src/include/lwip/sys.h:95,
+                 from ../Third_Party/LwIP/src/include/lwip/timeouts.h:44,
+                 from ../LWIP/App/lwip.h:34:
+../Third_Party/LwIP/system/arch/sys_arch.h:41:10: fatal error: cmsis_os.h: No such file or directory
+   41 | #include "cmsis_os.h"
+      |          ^~~~~~~~~~~~
+compilation terminated.
+../Third_Party/LwIP/src/include/lwip/pbuf.h:93:51: error: 'PBUF_LINK_HLEN' undeclared here (not in a function); did you mean 'PBUF_IP_HLEN'?
+   93 |   PBUF_TRANSPORT = PBUF_LINK_ENCAPSULATION_HLEN + PBUF_LINK_HLEN + PBUF_IP_HLEN + PBUF_TRANSPORT_HLEN,
+      |                                                   ^~~~~~~~~~~~~~
+      |                                                   PBUF_IP_HLEN
+../Third_Party/LwIP/src/include/lwip/pbuf.h:218:3: error: unknown type name 'LWIP_PBUF_REF_T'
+  218 |   LWIP_PBUF_REF_T ref;
+      |   ^~~~~~~~~~~~~~~
+In file included from ../Third_Party/LwIP/src/include/lwip/netif.h:46,
+                 from ../Third_Party/LwIP/src/include/netif/ethernet.h:47:
+../Third_Party/LwIP/src/include/lwip/ip_addr.h:318:9: error: unknown type name 'ip6_addr_t'
+  318 | typedef ip6_addr_t ip_addr_t;
+      |         ^~~~~~~~~~
+In file included from ../Third_Party/LwIP/src/include/lwip/netif.h:46,
+                 from ../Third_Party/LwIP/src/include/netif/ethernet.h:47:
+../Third_Party/LwIP/src/include/lwip/ip_addr.h:318:9: error: unknown type name 'ip6_addr_t'
+  318 | typedef ip6_addr_t ip_addr_t;
+      |         ^~~~~~~~~~
+In file included from ../Third_Party/LwIP/src/include/lwip/sys.h:95,
+                 from ../Third_Party/LwIP/src/include/lwip/timeouts.h:44,
+                 from ../LWIP/App/lwip.h:34:
+../Third_Party/LwIP/system/arch/sys_arch.h:41:10: fatal error: cmsis_os.h: No such file or directory
+   41 | #include "cmsis_os.h"
+      |          ^~~~~~~~~~~~
+compilation terminated.
+In file included from ../Third_Party/LwIP/src/include/lwip/sys.h:95,
+                 from ../Third_Party/LwIP/src/include/lwip/timeouts.h:44,
+                 from ../LWIP/App/lwip.h:34:
+../Third_Party/LwIP/system/arch/sys_arch.h:41:10: fatal error: cmsis_os.h: No such file or directory
+   41 | #include "cmsis_os.h"
+      |          ^~~~~~~~~~~~
+compilation terminated.
+make: *** [Core/Src/subdir.mk:40: Core/Src/syscalls.o] Error 1
+make: *** [Core/Src/subdir.mk:40: Core/Src/tcp_echo.o] Error 1
+make: *** [Core/Src/subdir.mk:40: Core/Src/sysmem.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+
+09:51:32 Build Failed. 29 errors, 0 warnings. (took 709ms)
+
