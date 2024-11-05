@@ -1,1 +1,0 @@
-mode.com %1 BAUD=%2 PARITY=N DATA=8 STOP=1
