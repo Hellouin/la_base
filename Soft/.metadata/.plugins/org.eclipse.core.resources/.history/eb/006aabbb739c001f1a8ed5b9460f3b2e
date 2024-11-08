@@ -1,0 +1,40 @@
+/*
+ * test.c
+ *
+ *  Created on: Nov 6, 2024
+ *      Author: hellm
+ */
+
+#include "test.h"
+#include "stm32l4xx_hal.h"
+
+extern UART_HandleTypeDef huart2;
+
+
+testStatus_t exempleTestFunctionPattern( testStructure_t *ptLocalTestStructure)
+{
+	// do a ptit test
+	return 0;
+}
+
+void TFunction_Factory(void){
+
+	#define NUM_TFUNCT 1
+
+	testStructure_t testStructure;
+	testStatus_t (*TabOfTFunction[NUM_TFUNCT])( testStructure_t *ptTestStructure) = {
+			exempleTestFunctionPattern,
+		//	TFunction_2,
+        //  TFunction_3,
+			};
+
+	for(int i =0; i<NUM_TFUNCT; i++)
+	{
+		if( TabOfTFunction[i](&testStructure) )
+		{
+			HAL_UART_Transmit(&huart2, (uint8_t*)testStructure.ResultState , sizeof(uint8_t), 1000);
+			//printf("result%d", (uint8_t)testStructure.ResultState );
+		}
+
+	}
+}

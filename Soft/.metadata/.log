@@ -3091,3 +3091,41 @@ org.eclipse.core.runtime.CoreException: Setup exceptions
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
 !SUBENTRY 1 com.st.stm32cube.ide.mcu.debug.launch 4 0 2024-11-05 07:57:19.618
 !MESSAGE Setup exceptions
+!SESSION 2024-11-05 20:33:17.202 -----------------------------------------------
+eclipse.buildId=Version 1.16.1
+java.version=17.0.11
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=fr_FR
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2024-11-05 20:33:20.279
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-11-05 20:33:43.484
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-11-05 20:33:43.484
+!MESSAGE Log4j2 initialized with config file C:\Users\hellm\Desktop\ENSI\la_base\Soft\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-11-05 20:33:55.984
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.core.resources 4 77 2024-11-06 21:27:08.686
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-11-06 21:27:08.686
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-11-06 21:27:08.686
+!MESSAGE C:\Users\hellm\Desktop\ENSI\la_base\Soft\GIT_example_STM32_HAL_LWIP_ENC28J overlaps the location of another project: 'GIT_example_STM32_HAL_LWIP_ENC28J'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-11-06 21:27:08.687
+!MESSAGE Project is null
+
+!ENTRY org.eclipse.core.resources 4 77 2024-11-06 21:27:25.603
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2024-11-06 21:27:25.603
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2024-11-06 21:27:25.603
+!MESSAGE C:\Users\hellm\Desktop\ENSI\la_base\Soft\GIT_example_STM32_HAL_LWIP_ENC28J overlaps the location of another project: 'GIT_example_STM32_HAL_LWIP_ENC28J'
+
+!ENTRY com.st.stm32cube.common.projectcreation 4 0 2024-11-06 21:27:25.603
+!MESSAGE Project is null

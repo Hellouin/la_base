@@ -103,9 +103,7 @@ int main(void)
   MX_SPI2_Init();
   /* USER CODE BEGIN 2 */
 
-  /*ENC_HandleTypeDef handle;
-  enc_start(&handle);
-  */
+  TFunction_Factory();
   MX_LWIP_Init();
   app_echoserver_init();
   /* USER CODE END 2 */

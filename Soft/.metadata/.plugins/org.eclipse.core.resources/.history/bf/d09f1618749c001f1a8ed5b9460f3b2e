@@ -1,0 +1,39 @@
+/*
+ * test.h
+ *
+ *  Created on: Sep 7, 2024
+ *      Author: hellm
+ */
+
+#ifndef INC_TEST_H_
+#define INC_TEST_H_
+
+#include "stdint.h"
+
+#define UNIT_TEST 				// remove or add this define to activate unit test
+#define FUNCTIONAL_TEST			// remove or add this define to activate functional test
+
+
+typedef int8_t testStatus_t;
+
+enum eResultState_t {
+	succes,
+	failed,
+	timeout,
+	retry,
+	ignore,
+	missing
+};
+
+
+typedef struct testStructure_t {
+
+	testStatus_t ResultState;
+	uint8_t *pcTestFunctionName;
+	uint16_t sTestFunctionNum;
+	uint16_t sTimeSpentOnTest;
+	uint8_t *pcbuffer;
+}testStructure_t;
+
+
+#endif /* INC_TEST_H_ */

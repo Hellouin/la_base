@@ -14,14 +14,27 @@
 #define FUNCTIONAL_TEST			// remove or add this define to activate functional test
 
 
-typedef int32_t testStatus_t;
+typedef int8_t testStatus_t;
 
-typedef struct test_Handler_t{
+enum eResultState_t {
+	success,
+	failed,
+	timeout,
+	retry,
+	ignore,
+	missing
+};
 
-	int8_t cStateOfTest;		// Fail or success
-	int8_t *cMsg;				// Short sentence to explain why test failed
+typedef struct testStructure_t {
 
-}test_Handler_t;
+	testStatus_t ResultState;		// résultat du test
+	uint8_t *pcTestFunctionName;	// nom de la fonction testé
+	uint16_t sTestFunctionNum;		// champ résérvé, rempli par TFunction_Factory()
+	uint16_t sTimeSpentOnTest;		// temps passé dur l'execution du test
+	char *pcbuffer;					// ptite phrase si besoin est, ou d'autre genre d'info
 
+}testStructure_t;
+
+void TFunction_Factory(void);
 
 #endif /* INC_TEST_H_ */
