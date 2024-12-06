@@ -6318,6 +6318,17 @@
 		)
 		(uuid "aff4be3c-4b32-4dbd-b8d3-e491677fc8bb")
 	)
+	(text "Les PORTs UART DOIVENT etre déplacer sur les PIN 42 et 43 Pour utiliser UART 1 et non 2\nUART 2 a des fonctionaliser en moins :)"
+		(exclude_from_sim no)
+		(at 239.268 81.534 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(italic yes)
+			)
+		)
+		(uuid "b5e58088-6adf-4ef4-92ba-989eef3fea2b")
+	)
 	(text "Etat du registre TX output-\n(cf p.87)buffer full ou ready for data  "
 		(exclude_from_sim no)
 		(at 119.126 147.066 0)
