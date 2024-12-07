@@ -239,7 +239,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "ZED_F9P_minimal.kicad_pro",
+    "filename": "régulateur_tb.kicad_pro",
     "version": 1
   },
   "net_settings": {
@@ -377,7 +377,7 @@
         "version": 0
       },
       "model_mode": 4,
-      "workbook_filename": ""
+      "workbook_filename": "régulateur_tb.wbk"
     },
     "page_layout_descr_file": "",
     "plot_directory": "",
@@ -392,7 +392,7 @@
   },
   "sheets": [
     [
-      "b6a75013-49e3-468e-8fb3-ec14dcddf343",
+      "042b7c5b-326d-4b68-9afc-2f6690861d20",
       "Racine"
     ]
   ],
