@@ -1,0 +1,10 @@
+projet d'école d'ingénieurs, permet de nous former en harware concrets
+(mets en perspective toutes les problématiques liés à l'electronique)
+(adaptation d'impédance, tension, courant, découpalge  alim, perturbation EM)
+
+projet d'étudiants alternants, bonne pub pour eux via la  diversité d'entreprise que comporte notre groupoe
+et donc clients potentiels si jamais collaboration smooth
+
+projet originaire du projet centipède utilisant déja leur puce
+	réalisation  sous kicad pour continuité open source
+		
