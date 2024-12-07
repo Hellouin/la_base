@@ -1,0 +1,8 @@
+../Core/Src/tcp_echo.c:24:7:app_echoserver_init	3
+../Core/Src/tcp_echo.c:51:14:app_callback_accepted	2
+../Core/Src/tcp_echo.c:83:14:app_callback_received	10
+../Core/Src/tcp_echo.c:154:13:app_callback_error	2
+../Core/Src/tcp_echo.c:169:14:app_callback_poll	4
+../Core/Src/tcp_echo.c:197:14:app_callback_sent	3
+../Core/Src/tcp_echo.c:221:13:app_send_data	7
+../Core/Src/tcp_echo.c:263:13:app_close_connection	2

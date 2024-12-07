@@ -1,9 +1,0 @@
-EESchema-DOCLIB  Version 2.0
-#
-$CMP ZED-F9P-15B
-D GNSS / GPS Modules u-blox F9 dual band L1/L5 GNSS module high precision Professional Grade LGA, 16x12 mm, 250 pcs/reel
-K
-F https://content.u-blox.com/sites/default/files/documents/ZED-F9P-15B_DataSheet_UBX-23009090.pdf
-$ENDCMP
-#
-#End Doc Library

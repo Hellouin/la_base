@@ -1,9 +1,0 @@
-Manufacturer=u-blox
-PartNumber=ZED-F9P-15B
-PartCategory=Integrated Circuit
-PackageCategory=Other
-PinCount=102
-Version=1.7
-Released=2024-02-04 11:16:44
-Downloaded=2024-09-07 16:39:52
-3D=Y

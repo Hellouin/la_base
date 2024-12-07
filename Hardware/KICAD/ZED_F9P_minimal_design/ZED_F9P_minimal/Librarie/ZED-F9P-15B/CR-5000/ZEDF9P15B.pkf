@@ -1,0 +1,10 @@
+(unit MM)
+
+(package "ZEDF9P15B"
+    (type UNDEF)
+    (uver 2)
+    (mountForm default
+        (footprintRef "ZEDF9P15B")
+        (spec "default")
+    )
+)

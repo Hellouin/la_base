@@ -1,0 +1,3 @@
+../LWIP/App/lwip.c:58:6:ethernetif_notify_conn_changed	16	static
+../LWIP/App/lwip.c:92:6:MX_LWIP_Init	24	static
+../LWIP/App/lwip.c:166:6:MX_LWIP_Process	8	static

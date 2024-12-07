@@ -1,1 +1,0 @@
-# TEST POUR apprendre KICAD sur NEO F9P
