@@ -1,278 +1,85 @@
 /*
- * tcp_echo.c
+ * tcpecho.c
  *
- *  Created on: 2020. 3. 12.
- *      Author: KIKI
+ *  Created on: Nov 10, 2024
+ *      Author: hellm
  */
 
 #include "tcp_echo.h"
+#include "main.h"
+#include "cmsis_os.h"
+#include "lwip.h"
+#include "lwip/api.h"
+#define TCPECHO_THREAD_PRIO	0 	//osPriorityNormal
 
-static struct tcp_pcb *pcb_server;		//echoserver pcb
+static void tcpecho_thread(void *arg);
 
-/* callback functions */
-static err_t app_callback_accepted(void *arg, struct tcp_pcb *pcb_new, err_t err);
-static err_t app_callback_received(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_t err);
-static void app_callback_error(void *arg, err_t err);
-static err_t app_callback_poll(void *arg, struct tcp_pcb *tpcb);
-static err_t app_callback_sent(void *arg, struct tcp_pcb *tpcb, u16_t len);
-
-/* functions */
-static void app_send_data(struct tcp_pcb *tpcb, struct tcp_echoserver_struct *es); //send function
-static void app_close_connection(struct tcp_pcb *tpcb, struct tcp_echoserver_struct *es); //close function
-
-/* initialize echo server */
-err_t app_echoserver_init(void)
+void tcpecho_init(void)
 {
-  err_t err;
-  pcb_server = tcp_new();		//allocate pcb memory
-
-  if (pcb_server == NULL)
-  {
-    //lack of memory
-    memp_free(MEMP_TCP_PCB, pcb_server);
-    return ERR_MEM;
-  }
-
-  err = tcp_bind(pcb_server, IP_ADDR_ANY, ECHO_SERVER_LISTEN_PORT); //bind to port 7
-  if (err != ERR_OK)
-  {
-    //fail to bind
-    memp_free(MEMP_TCP_PCB, pcb_server);
-    return err;
-  }
-
-  pcb_server = tcp_listen(pcb_server);	//listen
-  tcp_accept(pcb_server, app_callback_accepted);	//register accept callback
-
-  return ERR_OK;
+	sys_thread_new("tcpecho_thread", tcpecho_thread, NULL, DEFAULT_THREAD_STACKSIZE, TCPECHO_THREAD_PRIO);
 }
 
-/* accept callback */
-static err_t app_callback_accepted(void *arg, struct tcp_pcb *pcb_new, err_t err)
+static void tcpecho_thread(void *arg)
 {
-  struct tcp_echoserver_struct *es;
+  struct netconn *conn, *newconn;
+  err_t err, accept_err;
+  struct netbuf *buf;
+  void *data;
+  u16_t len;
+  err_t recv_err;
 
-  LWIP_UNUSED_ARG(arg); //remove warning
-  LWIP_UNUSED_ARG(err);
+  LWIP_UNUSED_ARG(arg);
 
-  tcp_setprio(pcb_new, TCP_PRIO_NORMAL); //set priority for new pcb
+  /* Create a new connection identifier. */
+  conn = netconn_new(NETCONN_TCP);
 
-  es = (struct tcp_echoserver_struct*)
-      mem_malloc(sizeof(struct tcp_echoserver_struct)); //allocate tcp_echoserver_struct
-
-  if (es == NULL) //lack of memory
+  if (conn!=NULL)
   {
-    app_close_connection(pcb_new, es); //close connection
-    return ERR_MEM;
-  }
+    /* Bind connection to port number 7. */
+    err = netconn_bind(conn, NULL, 7);
 
-  es->state = ES_ACCEPTED; //accepted
-  es->pcb = pcb_new; //set pcb pointer
-  es->retries = 0; //clear counter
-  es->p = NULL; //clear buffer pointer
-
-  tcp_arg(pcb_new, es);		//send es structure as an argument
-  tcp_recv(pcb_new, app_callback_received);	//register receive callback
-  tcp_err(pcb_new, app_callback_error); //register error callback
-  tcp_poll(pcb_new, app_callback_poll, 0); //register poll callback
-
-  return ERR_OK;
-}
-
-/* receive callback */
-static err_t app_callback_received(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_t err)
-{
-  struct tcp_echoserver_struct *es;
-  err_t ret_err;
-
-  LWIP_ASSERT("arg != NULL", arg != NULL); //check argument
-  es = (struct tcp_echoserver_struct*) arg;
-
-  if (p == NULL) //callback is called but there's no data
-  {
-    es->state = ES_CLOSING;
-    if (es->p == NULL)
+    if (err == ERR_OK)
     {
-      app_close_connection(tpcb, es); //close connection
-    }
-    else //if there's remained data to send
-    {
-      tcp_sent(tpcb, app_callback_sent); //register send callback
-      app_send_data(tpcb, es); //send remained data
-    }
-    ret_err = ERR_OK;
-  }
-  else if (err != ERR_OK) //error when receiving
-  {
-    if (p != NULL) //buffer is not empty
-    {
-      es->p = NULL;
-      pbuf_free(p); //clear buffer
-    }
-    ret_err = err;
-  }
-  else if (es->state == ES_ACCEPTED) //first data receiving
-  {
-    es->state = ES_RECEIVED; //change state
-    es->p = p; //set buffer pointer
-    tcp_sent(tpcb, app_callback_sent); //register send callback
-    app_send_data(tpcb, es); //send data via es->p
-    ret_err = ERR_OK;
-  }
-  else if (es->state == ES_RECEIVED) //additional data receiving
-  {
-    if (es->p == NULL) //no data to send
-    {
-      es->p = p; //set buffer pointer
-      app_send_data(tpcb, es); //send data
-    }
-    else //buffer is not empty, there's data to send
-    {
-      struct pbuf *ptr = es->p; //head buffer
-      pbuf_chain(ptr, p);	//append tail buffer to the head, this buffer will be handled by poll callback
-    }
-    ret_err = ERR_OK;
-  }
-  else if (es->state == ES_CLOSING) //receiving data when connection is closing
-  {
-    tcp_recved(tpcb, p->tot_len);	//advertise window size
-    es->p = NULL;
-    pbuf_free(p);
-    ret_err = ERR_OK;
-  }
-  else //undefined condition
-  {
-    tcp_recved(tpcb, p->tot_len);	//advertise window size
-    es->p = NULL;
-    pbuf_free(p);
-    ret_err = ERR_OK;
-  }
-  return ret_err;
-}
+      /* Tell connection to go into listening mode. */
+      netconn_listen(conn);
 
-/* error callback */
-static void app_callback_error(void *arg, err_t err)
-{
-  struct tcp_echoserver_struct *es;
-  LWIP_UNUSED_ARG(err);
-
-  es = (struct tcp_echoserver_struct*) arg;
-  if (es != NULL)
-  {
-    mem_free(es);	//free es structure
-  }
-
-  //HAL_GPIO_WritePin(LED_BLUE_GPIO_Port, LED_BLUE_Pin, GPIO_PIN_SET); //turn on blue LED when there's error.
-}
-
-/* poll callback */
-static err_t app_callback_poll(void *arg, struct tcp_pcb *tpcb)
-{
-  struct tcp_echoserver_struct *es;
-  es = (struct tcp_echoserver_struct*) arg;
-
-  if (es == NULL) //if there's no es structure
-  {
-    tcp_abort(tpcb); //abort connection
-    return ERR_ABRT;
-  }
-
-  if (es->p != NULL) //if there's data to send
-  {
-    tcp_sent(tpcb, app_callback_sent); //register send callback
-    app_send_data(tpcb, es); //send data
-  }
-  else //no data to send
-  {
-    if (es->state == ES_CLOSING)
-    {
-      app_close_connection(tpcb, es);		//close connection
-    }
-  }
-
-  return ERR_OK;
-}
-
-/* send callback */
-static err_t app_callback_sent(void *arg, struct tcp_pcb *tpcb, u16_t len)
-{
-  struct tcp_echoserver_struct *es;
-  LWIP_UNUSED_ARG(len);
-
-  es = (struct tcp_echoserver_struct*) arg;
-  es->retries = 0;
-
-  if (es->p != NULL) //if there's data to send
-  {
-    tcp_sent(tpcb, app_callback_sent); //register send callback
-    app_send_data(tpcb, es); //send data
-  }
-  else //no data to send
-  {
-    if (es->state == ES_CLOSING)
-    {
-      app_close_connection(tpcb, es); //close connection
-    }
-  }
-  return ERR_OK;
-}
-
-/* send data */
-static void app_send_data(struct tcp_pcb *tpcb, struct tcp_echoserver_struct *es)
-{
-  struct pbuf *ptr;
-  err_t wr_err = ERR_OK;
-
-  // while no error, data to send, data size is smaller than the size of the send buffer
-  while ((wr_err == ERR_OK) && (es->p != NULL)
-      && (es->p->len <= tcp_sndbuf(tpcb)))
-  {
-    ptr = es->p;
-    wr_err = tcp_write(tpcb, ptr->payload, ptr->len, TCP_WRITE_FLAG_COPY); //send data
-
-    if (wr_err == ERR_OK)
-    {
-      u16_t plen;
-      u8_t freed;
-
-      plen = ptr->len;
-      es->p = ptr->next;
-
-      if (es->p != NULL) //there's chained buffer to send
+      while (1)
       {
-        pbuf_ref(es->p);	//increase reference counter
-      }
+        /* Grab new connection. */
+         accept_err = netconn_accept(conn, &newconn);
 
-      do
-      {
-        freed = pbuf_free(ptr);		//free old buffer
-      }
-      while (freed == 0);
+        /* Process the new connection. */
+        if (accept_err == ERR_OK)
+        {
+          recv_err = netconn_recv(newconn, &buf);
+					while ( recv_err == ERR_OK)
+          {
+            do
+            {
+            	netbuf_data(buf, &data, &len);
+            	netconn_write(newconn, data, len, NETCONN_COPY);
 
-      tcp_recved(tpcb, plen);			//advertise window size
+            }
+            while (netbuf_next(buf) >= 0);
+
+            netbuf_delete(buf);
+            recv_err = netconn_recv(newconn, &buf);
+          }
+
+          /* Close connection and discard connection identifier. */
+          netconn_close(newconn);
+          netconn_delete(newconn);
+        }
+      }
     }
     else
     {
-      es->p = ptr;  //fail to send, recover buffer pointer
-      es->retries++;  //increase counter
+      netconn_delete(newconn);
+      printf(" can not bind TCP netconn");
     }
   }
-}
-
-/* close connection */
-static void app_close_connection(struct tcp_pcb *tpcb, struct tcp_echoserver_struct *es)
-{
-  /* clear callback functions */
-  tcp_arg(tpcb, NULL);
-  tcp_sent(tpcb, NULL);
-  tcp_recv(tpcb, NULL);
-  tcp_err(tpcb, NULL);
-  tcp_poll(tpcb, NULL, 0);
-
-  if (es != NULL)
+  else
   {
-    mem_free(es);		//free es structure
+    printf("can not create TCP netconn");
   }
-
-  tcp_close(tpcb);		//close connection
 }

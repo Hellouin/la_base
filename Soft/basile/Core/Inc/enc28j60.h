@@ -45,6 +45,9 @@
 #include <stdint.h>
 #include <stdbool.h>
 
+/* Interupt pin definition */
+#define ENC_INT_PIN	GPIO_PIN_8 __HAL_GPIO_EXTI_GET_IT(GPIO )
+
 /* Ethernet frames are between 64 and 1518 bytes long */
 #define MIN_FRAMELEN      64
 #define MAX_FRAMELEN      1518

@@ -1,3 +1,4 @@
-../LWIP/App/lwip.c:58:6:ethernetif_notify_conn_changed	2
-../LWIP/App/lwip.c:92:6:MX_LWIP_Init	2
-../LWIP/App/lwip.c:166:6:MX_LWIP_Process	1
+../LWIP/App/lwip.c:66:6:ethernetif_notify_conn_changed	2
+../LWIP/App/lwip.c:98:6:Netif_Config	2
+../LWIP/App/lwip.c:148:6:MX_LWIP_Init	2
+../LWIP/App/lwip.c:222:6:MX_LWIP_Process	1

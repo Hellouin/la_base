@@ -72,12 +72,21 @@ extern SPI_HandleTypeDef hspi2;
 
 static uint8_t SPIx_TxRx(uint8_t cmd)
 {
-  HAL_SPI_TransmitReceive(&hspi2, &cmd, &cmd, 1, SPIx_TIMEOUT);
+	HAL_NVIC_DisableIRQ(EXTI9_5_IRQn);
+	HAL_NVIC_DisableIRQ(EXTI15_10_IRQn);
+
+	HAL_SPI_TransmitReceive(&hspi2, &cmd, &cmd, 1, SPIx_TIMEOUT);
+
+	HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
+	HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
   return cmd;
 }
 
 static void SPIx_TxBuf(uint8_t *m2s, uint8_t *s2m, uint16_t bufflen)
 {
+	HAL_NVIC_DisableIRQ(EXTI9_5_IRQn);
+	HAL_NVIC_DisableIRQ(EXTI15_10_IRQn);
+
   SPIx_CS;
 
   if((s2m == NULL) && (m2s != NULL))
@@ -94,6 +103,8 @@ static void SPIx_TxBuf(uint8_t *m2s, uint8_t *s2m, uint16_t bufflen)
   }
 
   SPIx_DS;
+  HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
+  HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 }
 
 /* Initialize STM32 watchdog timer */
@@ -152,8 +163,8 @@ void enc_reset(ENC_HandleTypeDef *handle)
   SPIx_DS;
 
   handle->bank = 0; /* Initialize the trace on the current selected bank */
-  //udelay(2);
-  HAL_Delay(2); /* >1000 us, conforms to errata #2 */
+  udelay(2);
+  //HAL_Delay(2); /* >1000 us, conforms to errata #2 */
 }
 
 /* Initialize the enc28j60 and configure the needed hardware resources */
@@ -204,7 +215,7 @@ bool enc_start(ENC_HandleTypeDef *handle)
 
   do
   {
-    HAL_Delay(10); /* Wait for 10 ms to let the clock be ready */
+	udelay(10); //HAL_Delay(10); /* Wait for 10 ms to let the clock be ready */
     regval = enc_rdbreg(handle, ENC_ESTAT);
   }while((regval & ESTAT_CLKRDY) == 0);
 

@@ -40,7 +40,7 @@
 #endif /* WITH_RTOS */
 
 /* USER CODE BEGIN 0 */
-
+void Netif_Config(void);
 /* USER CODE END 0 */
 
 /* Global Variables ----------------------------------------------------------*/
@@ -63,6 +63,27 @@ void MX_LWIP_Process(void);
 #ifdef __cplusplus
 }
 #endif
+
+//#define USE_DHCP     1  /* enable DHCP, if disabled static address is used*/
+
+/*Static IP ADDRESS*/
+#define IP_ADDR0   169
+#define IP_ADDR1   254
+#define IP_ADDR2   168
+#define IP_ADDR3   100
+
+/*NETMASK*/
+#define NETMASK_ADDR0   255
+#define NETMASK_ADDR1   255
+#define NETMASK_ADDR2   0
+#define NETMASK_ADDR3   0
+
+/*Gateway Address*/
+#define GW_ADDR0   169
+#define GW_ADDR1   254
+#define GW_ADDR2   168
+#define GW_ADDR3   70
+
 #endif /*__ mx_lwip_H */
 
 /**

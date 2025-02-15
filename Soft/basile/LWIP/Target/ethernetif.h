@@ -37,12 +37,20 @@ void ethernetif_set_link(struct netif *netif);
 void ethernetif_update_config(struct netif *netif);
 void ethernetif_notify_conn_changed(struct netif *netif);
 
+
+void ethernetif_process_irq(void const *argument);
+void ethernet_irq_handler(osSemaphoreId Netif_LinkSemaphore);
+
 u32_t sys_jiffies(void);
 u32_t sys_now(void);
 
 /* USER CODE BEGIN 1 */
 void ethernet_transmit(void);
-
+/* Structure that include link thread parameters */
+struct enc_irq_str {
+  struct netif *netif;
+  osSemaphoreId semaphore;
+};
 /* USER CODE END 1 */
 #endif
 

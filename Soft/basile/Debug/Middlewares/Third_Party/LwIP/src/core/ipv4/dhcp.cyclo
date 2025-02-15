@@ -9,7 +9,7 @@
 ../Middlewares/Third_Party/LwIP/src/core/ipv4/dhcp.c:499:1:dhcp_timeout	9
 ../Middlewares/Third_Party/LwIP/src/core/ipv4/dhcp.c:546:1:dhcp_t1_timeout	5
 ../Middlewares/Third_Party/LwIP/src/core/ipv4/dhcp.c:573:1:dhcp_t2_timeout	6
-../Middlewares/Third_Party/LwIP/src/core/ipv4/dhcp.c:599:1:dhcp_handle_ack	8
+../Middlewares/Third_Party/LwIP/src/core/ipv4/dhcp.c:599:1:dhcp_handle_ack	6
 ../Middlewares/Third_Party/LwIP/src/core/ipv4/dhcp.c:690:1:dhcp_set_struct	4
 ../Middlewares/Third_Party/LwIP/src/core/ipv4/dhcp.c:712:6:dhcp_cleanup	3
 ../Middlewares/Third_Party/LwIP/src/core/ipv4/dhcp.c:737:1:dhcp_start	10
@@ -30,7 +30,7 @@
 ../Middlewares/Third_Party/LwIP/src/core/ipv4/dhcp.c:1444:1:dhcp_option_byte	2
 ../Middlewares/Third_Party/LwIP/src/core/ipv4/dhcp.c:1452:1:dhcp_option_short	2
 ../Middlewares/Third_Party/LwIP/src/core/ipv4/dhcp.c:1461:1:dhcp_option_long	2
-../Middlewares/Third_Party/LwIP/src/core/ipv4/dhcp.c:1507:1:dhcp_parse_reply	53
+../Middlewares/Third_Party/LwIP/src/core/ipv4/dhcp.c:1507:1:dhcp_parse_reply	50
 ../Middlewares/Third_Party/LwIP/src/core/ipv4/dhcp.c:1754:1:dhcp_recv	24
 ../Middlewares/Third_Party/LwIP/src/core/ipv4/dhcp.c:1874:1:dhcp_create_msg	16
 ../Middlewares/Third_Party/LwIP/src/core/ipv4/dhcp.c:1960:1:dhcp_option_trailer	4

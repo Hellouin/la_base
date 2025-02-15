@@ -279,8 +279,7 @@ tcpip_inpkt(struct pbuf *p, struct netif *inp, netif_input_fn input_fn)
  *          NETIF_FLAG_ETHERNET flags)
  * @param inp the network interface on which the packet was received
  */
-err_t
-tcpip_input(struct pbuf *p, struct netif *inp)
+err_t tcpip_input(struct pbuf *p, struct netif *inp)
 {
 #if LWIP_ETHERNET
   if (inp->flags & (NETIF_FLAG_ETHARP | NETIF_FLAG_ETHERNET)) {
@@ -598,8 +597,7 @@ tcpip_callbackmsg_trycallback_fromisr(struct tcpip_callback_msg *msg)
  * @param initfunc a function to call when tcpip_thread is running and finished initializing
  * @param arg argument to pass to initfunc
  */
-void
-tcpip_init(tcpip_init_done_fn initfunc, void *arg)
+void tcpip_init(tcpip_init_done_fn initfunc, void *arg)
 {
   lwip_init();
 

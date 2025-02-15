@@ -6,11 +6,12 @@
  */
 
 #include "test.h"
+#ifdef UNIT_TEST
 #include "stm32l4xx_hal.h"
-
+#include <stdlib.h>
 extern UART_HandleTypeDef huart2;
 
-#ifdef UNIT_TEST
+
 testStatus_t exempleTestFunctionPattern( testStructure_t *ptLocalTestStructure)
 {
 	// do a ptit test
@@ -21,16 +22,15 @@ testStatus_t exempleTestFunctionPattern( testStructure_t *ptLocalTestStructure)
 	ptLocalTestStructure->sTimeSpentOnTest = 3;
 	return 0;
 }
-#endif
+
 
 void TFunction_Factory(void){
 
-	#define NUM_TFUNCT 2
+	#define NUM_TFUNCT 1
 
 	testStructure_t testStructure;
 	testStatus_t (*TabOfTFunction[NUM_TFUNCT])( testStructure_t *ptTestStructure) = {
 			exempleTestFunctionPattern,
-			exempleTestFunctionPattern
 		//	TFunction_2,
         //  TFunction_3,
 			};
@@ -50,4 +50,7 @@ void TFunction_Factory(void){
 		}
 
 	}
+
+	//exit(0);
 }
+#endif /* UNIT_TEST */

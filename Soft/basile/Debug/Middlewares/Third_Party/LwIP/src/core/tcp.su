@@ -26,7 +26,6 @@
 ../Middlewares/Third_Party/LwIP/src/core/tcp.c:1608:1:tcp_segs_free	24	static
 ../Middlewares/Third_Party/LwIP/src/core/tcp.c:1623:1:tcp_seg_free	16	static
 ../Middlewares/Third_Party/LwIP/src/core/tcp.c:1644:1:tcp_setprio	16	static
-../Middlewares/Third_Party/LwIP/src/core/tcp.c:1662:1:tcp_seg_copy	24	static
 ../Middlewares/Third_Party/LwIP/src/core/tcp.c:1684:1:tcp_recv_null	24	static
 ../Middlewares/Third_Party/LwIP/src/core/tcp.c:1706:1:tcp_kill_prio	32	static
 ../Middlewares/Third_Party/LwIP/src/core/tcp.c:1752:1:tcp_kill_state	32	static
@@ -49,4 +48,3 @@
 ../Middlewares/Third_Party/LwIP/src/core/tcp.c:2331:1:tcp_netif_ip_addr_changed	24	static
 ../Middlewares/Third_Party/LwIP/src/core/tcp.c:2354:1:tcp_debug_state_str	16	static
 ../Middlewares/Third_Party/LwIP/src/core/tcp.c:2360:1:tcp_tcp_get_tcp_addrinfo	24	static
-../Middlewares/Third_Party/LwIP/src/core/tcp.c:2386:1:tcp_free_ooseq	16	static

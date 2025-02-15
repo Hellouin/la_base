@@ -1,39 +1,14 @@
 /*
- * tcp_echo.h
+ * tcpecho.h
  *
- *  Created on: 2020. 3. 12.
- *      Author: KIKI
+ *  Created on: Nov 10, 2024
+ *      Author: hellm
  */
 
-#ifndef INC_TCP_ECHO_H_
-#define INC_TCP_ECHO_H_
+#ifndef APP_TCP_ECHO_H_
+#define APP_TCP_ECHO_H_
+
+void tcpecho_init(void);
 
 
-
-#include "lwip/debug.h"
-#include "lwip/stats.h"
-#include "lwip/tcp.h"
-
-#define  ECHO_SERVER_LISTEN_PORT	7
-
-/* server states */
-enum tcp_echoserver_states
-{
-	ES_NONE = 0,
-	ES_ACCEPTED,
-	ES_RECEIVED,
-	ES_CLOSING
-};
-
-/* server info */
-struct tcp_echoserver_struct
-{
-	uint8_t state; //ES_NOE, ES_ACCEPTED, ES_RECEIVED, ES_CLOSING
-	uint8_t retries; //retry counter
-	struct tcp_pcb *pcb; //PCB 포인터
-	struct pbuf *p; //송수신 버퍼 포인터
-};
-
-err_t app_echoserver_init(void);
-
-#endif /* INC_TCP_ECHO_H_ */
+#endif /* APP_TCP_ECHO_H_ */

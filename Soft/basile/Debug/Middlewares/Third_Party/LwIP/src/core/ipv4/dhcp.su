@@ -9,7 +9,7 @@
 ../Middlewares/Third_Party/LwIP/src/core/ipv4/dhcp.c:499:1:dhcp_timeout	24	static
 ../Middlewares/Third_Party/LwIP/src/core/ipv4/dhcp.c:546:1:dhcp_t1_timeout	24	static
 ../Middlewares/Third_Party/LwIP/src/core/ipv4/dhcp.c:573:1:dhcp_t2_timeout	24	static
-../Middlewares/Third_Party/LwIP/src/core/ipv4/dhcp.c:599:1:dhcp_handle_ack	32	static
+../Middlewares/Third_Party/LwIP/src/core/ipv4/dhcp.c:599:1:dhcp_handle_ack	24	static
 ../Middlewares/Third_Party/LwIP/src/core/ipv4/dhcp.c:690:1:dhcp_set_struct	16	static
 ../Middlewares/Third_Party/LwIP/src/core/ipv4/dhcp.c:712:6:dhcp_cleanup	16	static
 ../Middlewares/Third_Party/LwIP/src/core/ipv4/dhcp.c:737:1:dhcp_start	24	static

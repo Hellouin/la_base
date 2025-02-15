@@ -8,9 +8,12 @@
 #ifndef INC_TEST_H_
 #define INC_TEST_H_
 
+#define UNIT_TEST 				// remove or add this define to activate unit test
+#ifdef UNIT_TEST
+
 #include "stdint.h"
 
-#define UNIT_TEST 				// remove or add this define to activate unit test
+
 #define FUNCTIONAL_TEST			// remove or add this define to activate functional test
 
 
@@ -37,4 +40,5 @@ typedef struct testStructure_t {
 
 void TFunction_Factory(void);
 
+#endif /* UNIT_TEST */
 #endif /* INC_TEST_H_ */

@@ -27,6 +27,8 @@
 #include "netif/etharp.h"
 #include "ethernetif.h"
 #include <string.h>
+#include "lwip/tcpip.h"
+#include "cmsis_os.h"
 
 /* Within 'USER CODE' section, code will be kept by default at each generation */
 /* USER CODE BEGIN 0 */
@@ -35,6 +37,7 @@
 
 /* Private define ------------------------------------------------------------*/
 
+extern SemaphoreHandle_t xSemaphore;
 /* Network interface name */
 #define IFNAME0 'e'
 #define IFNAME1 'n'
@@ -106,7 +109,7 @@ static void low_level_init(struct netif *netif)
   /* set MAC hardware address length */
   netif->hwaddr_len = ETHARP_HWADDR_LEN;
 
-  /* set MAC hardware address */
+  /* set MAC address */
   netif->hwaddr[0] = 0x00;
   netif->hwaddr[1] = 0x80;
   netif->hwaddr[2] = 0xE1;
@@ -117,7 +120,7 @@ static void low_level_init(struct netif *netif)
   EncHandle.Init.MACAddr = netif->hwaddr;
   EncHandle.Init.DuplexMode = ETH_MODE_HALFDUPLEX;
   EncHandle.Init.ChecksumMode = ETH_CHECKSUM_BY_HARDWARE;
-  EncHandle.Init.InterruptEnableBits = EIE_LINKIE;
+  EncHandle.Init.InterruptEnableBits = EIE_LINKIE | EIE_PKTIE;
 
   /* configure ethernet peripheral (GPIOs, clocks, MAC, DMA) */
   ENC_MspInit(&EncHandle);
@@ -155,22 +158,22 @@ static void low_level_init(struct netif *netif)
  *       to become availale since the stack doesn't retry to send a packet
  *       dropped because of memory failure (except for the TCP timers).
  */
-
+/*
 static err_t low_level_output(struct netif *netif, struct pbuf *p)
 {
-  /* TODO use netif to check if we are the right ethernet interface */
+  // TODO use netif to check if we are the right ethernet interface
   err_t errval;
   struct pbuf *q;
   uint32_t framelength = 0;
 
-  /* Prepare ENC28J60 Tx buffer */
+  // Prepare ENC28J60 Tx buffer
   errval = enc_prepare_txbuffer(&EncHandle, p->tot_len);
   if(errval != ERR_OK)
   {
     return errval;
   }
 
-  /* copy frame from pbufs to driver buffers and send packet */
+  // copy frame from pbufs to driver buffers and send packet
   for(q = p;q != NULL;q = q->next)
   {
     enc_wrbuffer(q->payload, q->len);
@@ -183,11 +186,55 @@ static err_t low_level_output(struct netif *netif, struct pbuf *p)
   }
 
   EncHandle.transmitLength = p->tot_len;
-  /* Actual transmission is triggered in main loop */
+  // Actual transmission is triggered in main loop
 
   return ERR_OK;
 }
+*/
+static err_t low_level_output(struct netif *netif, struct pbuf *p)
+{
+    /* TODO use netif to check if we are the right ethernet interface */
+  err_t errval;
+  struct pbuf *q;
+  uint32_t framelength = 0;
 
+  if (EncHandle.transmitLength != 0) {
+#ifdef USE_PROTOTHREADS
+     while (PT_SCHEDULE(enc_transmit(&transmit_pt, &EncHandle))) {
+         /* Wait for end of previous transmission */
+     }
+#else
+     do {
+         enc_transmit(&EncHandle);
+     } while (EncHandle.transmitLength != 0);
+#endif
+  }
+
+  /* Prepare ENC28J60 Tx buffer */
+  errval = enc_prepare_txbuffer(&EncHandle, p->tot_len);
+  if (errval != ERR_OK) {
+      return errval;
+  }
+
+  /* copy frame from pbufs to driver buffers and send packet */
+  for(q = p; q != NULL; q = q->next) {
+    enc_wrbuffer(q->payload, q->len);
+    framelength += q->len;
+  }
+
+  if (framelength != p->tot_len) {
+     return ERR_BUF;
+  }
+
+  EncHandle.transmitLength = p->tot_len;
+
+  /* If PROTOTHREADS are use, actual transmission is triggered in main loop */
+#ifndef USE_PROTOTHREADS
+    enc_transmit(&EncHandle);
+#endif
+
+  return ERR_OK;
+}
 /**
  * Should allocate a pbuf and transfer the bytes of the incoming
  * packet from the interface into the pbuf.
@@ -357,6 +404,67 @@ void ethernetif_set_link(struct netif *netif)
 }
 
 /* USER CODE BEGIN 7 */
+
+/**
+  * @brief  This function actually process pending IRQs.
+  * @param  handler: Reference to the driver state structure
+  * @retval None
+  */
+void ethernetif_process_irq_do(void const *argument)
+{
+    struct enc_irq_str *irq_arg = (struct enc_irq_str *)argument;
+
+    /* Handle ENC28J60 interrupt */
+    enc_irq_handler(&EncHandle);
+
+    /* Check whether the link is up or down*/
+    if ((EncHandle.interruptFlags & EIE_LINKIE) != 0) {
+        if((EncHandle.LinkStatus & PHSTAT2_LSTAT)!= 0) {
+            netif_set_link_up(irq_arg->netif);
+        } else {
+            netif_set_link_down(irq_arg->netif);
+        }
+    }
+
+    /* Check whether we have received a packet */
+    if((EncHandle.interruptFlags & EIR_PKTIF) != 0) {
+        ethernetif_input(irq_arg->netif);
+    }
+
+    /* Renable global interrupts */
+    enc_enable_interrupts(EIE_INTIE);
+}
+
+/**
+  * @brief  This function triggers the interrupt service callback.
+  * @param  netif: the network interface
+  * @retval None
+  */
+void ethernetif_process_irq(void const *argument)
+{
+  struct enc_irq_str *irq_arg = (struct enc_irq_str *)argument;
+
+  for(;;)
+  {
+	//if (xSemaphoreTake( xSemaphore, ( TickType_t )portMAX_DELAY ) == pdTRUE)
+	  if (osSemaphoreWait(irq_arg->semaphore, osWaitForever) == osOK)
+	  {
+    	/* Handle ENC28J60 interrupt */
+    	tcpip_callback((tcpip_callback_fn) ethernetif_process_irq_do, (void *) argument);
+	  }
+  }
+}
+
+/**
+  * @brief  This function unblocks ethernetif_process_irq when a new interrupt is received
+  * @param  netif: the network interface
+  * @retval None
+  */
+void ethernet_irq_handler(osSemaphoreId Netif_IrqSemaphore)
+{
+    /* Release thread to check interrupt flags */
+    // osSemaphoreRelease(Netif_IrqSemaphore);
+}
 
 /* USER CODE END 7 */
 

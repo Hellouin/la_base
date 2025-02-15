@@ -29,4 +29,10 @@ fp-info-cache
 *.csv
 
 #ne pas versionner
-/Test
+Soft/Test
+Soft/GIT_example_STM32_HAL_LWIP_ENC28J
+Soft/lwip-2.2.0
+Soft/ressource - STM32_HAL_LWIP_ENC28J60-main
+Soft/.metadata
+Soft/FreeRTOS_HTTP_server-master
+ Soft/basile/Debug

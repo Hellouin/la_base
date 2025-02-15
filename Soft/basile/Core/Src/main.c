@@ -22,9 +22,10 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-//#include "enc28j60.h"
+#include "rtos.h"
 #include "tcp_echo.h"
 #include "lwip.h"
+#include "lwip/tcpip.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -48,10 +49,16 @@ SPI_HandleTypeDef hspi2;
 UART_HandleTypeDef huart2;
 
 osThreadId defaultTaskHandle;
-uint32_t defaultTaskBuffer[ 128 ];
+uint32_t defaultTaskBuffer[ 256 ];
 osStaticThreadDef_t defaultTaskControlBlock;
 /* USER CODE BEGIN PV */
 
+SemaphoreHandle_t xSemaphore;
+StaticSemaphore_t xSemaphoreBuffer;
+
+osThreadId ethernetTaskHandleGlobal;
+
+BaseType_t xHigherPriorityTaskWoken = pdFALSE;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -103,9 +110,6 @@ int main(void)
   MX_SPI2_Init();
   /* USER CODE BEGIN 2 */
 
-  TFunction_Factory();
-  MX_LWIP_Init();
-  app_echoserver_init();
   /* USER CODE END 2 */
 
   /* USER CODE BEGIN RTOS_MUTEX */
@@ -126,24 +130,33 @@ int main(void)
 
   /* Create the thread(s) */
   /* definition and creation of defaultTask */
-
+  osThreadStaticDef(defaultTask, StartDefaultTask, osPriorityLow, 0, 256, defaultTaskBuffer, &defaultTaskControlBlock);
+  defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
-
-
   /* add threads, ... */
+  /* Semaphore to signal Ethernet Link state update */
+
+
+ // xSemaphore = xSemaphoreCreateBinary();
+  //StaticSemaphore_t xSemaphoreBuffer;
+  //xSemaphore = xSemaphoreCreateBinaryStatic(&xSemaphoreBuffer);
+
+  initRTOS();
   /* USER CODE END RTOS_THREADS */
 
   /* Start scheduler */
-
+  osKernelStart();
 
   /* We should never get here as control is now taken by the scheduler */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+
+
   while (1)
   {
-	 MX_LWIP_Process();
+	//MX_LWIP_Process();
 
     /* USER CODE END WHILE */
 
@@ -319,11 +332,67 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
+  /*Configure GPIO pin : PA8 */
+  GPIO_InitStruct.Pin = GPIO_PIN_8;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI9_5_IRQn, 6, 0);
+  HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
+
+  HAL_NVIC_SetPriority(EXTI15_10_IRQn, 6, 0);
+  HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
+
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */
 }
 
 /* USER CODE BEGIN 4 */
+
+/**
+  * @brief  Initializes the lwIP stack
+  * @param  None
+  * @retval None
+  */
+
+void StartTask03(void const * argument)
+{
+	taskENTER_CRITICAL();	//disable IRQ
+	xSemaphore = xSemaphoreCreateBinaryStatic(&xSemaphoreBuffer);
+	/* Create tcp_ip stack thread */
+	tcpip_init(NULL, NULL);
+
+	/* Initialize the LwIP stack */
+	Netif_Config();
+
+	/* start App thread (tcp echo here) */
+	tcpecho_init();
+
+	taskEXIT_CRITICAL();
+
+	/* infinite loop but pas trop quand même */
+	for(;;)
+	{
+		osThreadTerminate(NULL);
+	}
+
+}
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+  if (GPIO_Pin == 256)// pin PA8
+  {
+	  if (ethernetTaskHandleGlobal!=NULL)
+		  xSemaphoreGiveFromISR( xSemaphore, &xHigherPriorityTaskWoken );
+  }
+}
+
+void vApplicationStackOverflowHook(TaskHandle_t xTask, char *pcTaskName) {
+    printf("Stack overflow in task: %s\n", pcTaskName);
+    while (1);  // Bloque l'exécution si débordement détecté
+}
 
 /* USER CODE END 4 */
 
@@ -338,13 +407,13 @@ void StartDefaultTask(void const * argument)
 {
   /* USER CODE BEGIN 5 */
   /* Infinite loop */
- int i =0;
+	int i=0;
   for(;;)
   {
 	  i++;
 	  HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
 	  vTaskDelay(500);
-	  HAL_UART_Transmit(&huart2, &i, sizeof(i), 1000);
+	  //HAL_UART_Transmit(&huart2, &i, sizeof(i), 1000);
     osDelay(1);
   }
   /* USER CODE END 5 */

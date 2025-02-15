@@ -25,6 +25,14 @@
 #include "lwip/sio.h"
 #endif /* MDK ARM Compiler */
 #include "ethernetif.h"
+#include "tcpip.h"
+
+
+extern osSemaphoreId myBinarySem01Handle;
+extern SemaphoreHandle_t xSemaphore;
+extern osThreadId ethernetTaskHandleGlobal;
+/* Ethernet link thread Argument */
+struct enc_irq_str irq_arg;
 
 /* USER CODE BEGIN 0 */
 
@@ -86,13 +94,61 @@ void ethernetif_notify_conn_changed(struct netif *netif)
 
 /* USER CODE END 2 */
 
+/* find appropriate file for this on day */
+void Netif_Config(void)
+{
+  ip_addr_t ipaddr;
+  ip_addr_t netmask;
+  ip_addr_t gw;
+
+#ifdef USE_DHCP
+  ip_addr_set_zero_ip4(&ipaddr);
+  ip_addr_set_zero_ip4(&netmask);
+  ip_addr_set_zero_ip4(&gw);
+#else
+  IP_ADDR4(&ipaddr,IP_ADDR0,IP_ADDR1,IP_ADDR2,IP_ADDR3);
+  IP_ADDR4(&netmask,NETMASK_ADDR0,NETMASK_ADDR1,NETMASK_ADDR2,NETMASK_ADDR3);
+  IP_ADDR4(&gw,GW_ADDR0,GW_ADDR1,GW_ADDR2,GW_ADDR3);
+#endif /* USE_DHCP */
+
+
+  /* add the network interface */
+  netif_add(&gnetif, &ipaddr, &netmask, &gw, NULL, &ethernetif_init, &tcpip_input);
+
+  /* create a binary semaphore used for informing ethernetif of frame reception */
+
+  /*  Registers the default network interface. */
+  netif_set_default(&gnetif);
+
+  if (netif_is_link_up(&gnetif))
+  {
+    /* When the netif is fully configured this function must be called.*/
+    netif_set_up(&gnetif);
+  }
+  else
+  {
+    /* When the netif link is down this function must be called */
+    netif_set_down(&gnetif);
+  }
+  /* Set the link callback function, this function is called on change of link status*/
+  netif_set_link_callback(&gnetif, ethernetif_update_config);
+
+  /* Create the Ethernet IRQ handler thread */
+  vQueueAddToRegistry(xSemaphore, "osSemaphore"); // permet le debug via l'interface dedié
+  irq_arg.netif = &gnetif;
+  irq_arg.semaphore = xSemaphore;
+
+  osThreadDef(EthernetTsk, ethernetif_process_irq, osPriorityRealtime, 0, configMINIMAL_STACK_SIZE *2);
+  ethernetTaskHandleGlobal = osThreadCreate (osThread(EthernetTsk), &irq_arg);
+}
+
 /**
  * LwIP initialization function
  */
 void MX_LWIP_Init(void)
 {
   /* Initilialize the LwIP stack without RTOS */
-  lwip_init();
+ // lwip_init();
 
   /* IP addresses initialization with DHCP (IPv4) */
 #ifdef USE_DHCP
@@ -118,10 +174,11 @@ void MX_LWIP_Init(void)
   IP4_ADDR(&gw, GATEWAY_ADDRESS[0], GATEWAY_ADDRESS[1], GATEWAY_ADDRESS[2], GATEWAY_ADDRESS[3]);
 #endif
 
+
 /* add the network interface (IPv4/IPv6) without RTOS */
   netif_add(&gnetif, &ipaddr, &netmask, &gw, NULL, &ethernetif_init, &ethernet_input);
 
-  /* Registers the default network interface */
+ /* Registers the default network interface */
   netif_set_default(&gnetif);
 
   if (netif_is_link_up(&gnetif))
@@ -135,8 +192,7 @@ void MX_LWIP_Init(void)
     netif_set_down(&gnetif);
   }
 
-  /* Set the link callback function, this function is called on change of link status*/
-  netif_set_link_callback(&gnetif, ethernetif_update_config);
+
 
   /* USER CODE BEGIN 3 */
 #ifdef USE_DHCP
