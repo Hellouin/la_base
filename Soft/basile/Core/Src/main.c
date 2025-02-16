@@ -368,7 +368,10 @@ void StartTask03(void const * argument)
 	Netif_Config();
 
 	/* start App thread (tcp echo here) */
-	tcpecho_init();
+	//tcpecho_init();
+
+	/* Initialize webserver demo */
+	http_server_netconn_init();
 
 	taskEXIT_CRITICAL();
 

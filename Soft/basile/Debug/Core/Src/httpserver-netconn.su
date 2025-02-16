@@ -1,0 +1,4 @@
+../Core/Src/httpserver-netconn.c:176:13:http_server_serve	64	static
+../Core/Src/httpserver-netconn.c:258:13:http_server_netconn_thread	32	static
+../Core/Src/httpserver-netconn.c:298:6:http_server_netconn_init	16	static
+../Core/Src/httpserver-netconn.c:309:6:DynWebPage	568	static

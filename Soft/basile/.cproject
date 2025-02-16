@@ -148,10 +148,10 @@
 					<fileInfo id="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.424095794.13611424" name="tcp_echo.h" rcbsApplicability="disable" resourcePath="Core/Inc/tcp_echo.h" toolsToInvoke=""/>
 					<fileInfo id="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.424095794.98529441" name="ethernetif.h" rcbsApplicability="disable" resourcePath="Core/Inc/ethernetif.h" toolsToInvoke=""/>
 					<sourceEntries>
-						<entry excluding="Inc/ethernetif.h|Src/ethernetif.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Core"/>
-						<entry excluding="Target/lwipopts.h" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="LWIP"/>
-						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Middlewares"/>
+						<entry excluding="Src/fsdata_custom.c|Fs|Inc/ethernetif.h|Src/ethernetif.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Core"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Drivers"/>
+						<entry excluding="Target/lwipopts.h" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="LWIP"/>
+						<entry excluding="Third_Party/LwIP/src/apps/http/fsdata_custom.c|Third_Party/LwIP/src/apps/http/fsdata.c|Third_Party/LwIP/src/apps/http/fs|Third_Party/LwIP/src/apps/http/makefsdata" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Middlewares"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -255,10 +255,10 @@
 					<fileInfo id="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.release.114254629.1414319265" name="tcp_echo.h" rcbsApplicability="disable" resourcePath="Core/Inc/tcp_echo.h" toolsToInvoke=""/>
 					<fileInfo id="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.release.114254629.1839395341" name="ethernetif.h" rcbsApplicability="disable" resourcePath="Core/Inc/ethernetif.h" toolsToInvoke=""/>
 					<sourceEntries>
-						<entry excluding="Inc/ethernetif.h|Src/ethernetif.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Core"/>
-						<entry excluding="Target/lwipopts.h" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="LWIP"/>
-						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Middlewares"/>
+						<entry excluding="Src/fsdata_custom.c|Fs|Inc/ethernetif.h|Src/ethernetif.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Core"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Drivers"/>
+						<entry excluding="Target/lwipopts.h" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="LWIP"/>
+						<entry excluding="Third_Party/LwIP/src/apps/http/fsdata_custom.c|Third_Party/LwIP/src/apps/http/fsdata.c|Third_Party/LwIP/src/apps/http/fs|Third_Party/LwIP/src/apps/http/makefsdata" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Middlewares"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>

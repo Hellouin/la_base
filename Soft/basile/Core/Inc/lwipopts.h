@@ -65,7 +65,7 @@ a lot of data that needs to be copied, this should be set high. */
 /* MEMP_NUM_PBUF: the number of memp struct pbufs. If the application
    sends a lot of data out of ROM (or other static memory), this
    should be set high. */
-#define MEMP_NUM_PBUF           10
+#define MEMP_NUM_PBUF           100
 /* MEMP_NUM_UDP_PCB: the number of UDP protocol control blocks. One
    per active UDP "connection". */
 #define MEMP_NUM_UDP_PCB        6
@@ -77,7 +77,7 @@ a lot of data that needs to be copied, this should be set high. */
 #define MEMP_NUM_TCP_PCB_LISTEN 5
 /* MEMP_NUM_TCP_SEG: the number of simultaneously queued TCP
    segments. */
-#define MEMP_NUM_TCP_SEG        8
+#define MEMP_NUM_TCP_SEG        32
 /* MEMP_NUM_SYS_TIMEOUT: the number of simulateously active
    timeouts. */
 #define MEMP_NUM_SYS_TIMEOUT    10
@@ -105,7 +105,7 @@ a lot of data that needs to be copied, this should be set high. */
 #define TCP_MSS                 (1500 - 40)	  /* TCP_MSS = (Ethernet MTU - IP header size - TCP header size) */
 
 /* TCP sender buffer space (bytes). */
-#define TCP_SND_BUF             (4*TCP_MSS)
+#define TCP_SND_BUF             (8*TCP_MSS)
 
 /*  TCP_SND_QUEUELEN: TCP sender buffer space (pbufs). This must be at least
   as much as (2 * TCP_SND_BUF/TCP_MSS) for things to work. */
@@ -228,7 +228,7 @@ The STM32F7xxallows computing and verifying the IP, UDP, TCP and ICMP checksums 
 #define DEFAULT_TCP_RECVMBOX_SIZE       6
 #define DEFAULT_ACCEPTMBOX_SIZE         6
 #define DEFAULT_THREAD_STACKSIZE        500
-#define TCPIP_THREAD_PRIO               0	//os prio normal
+#define TCPIP_THREAD_PRIO               osPriorityHigh
 
 
 

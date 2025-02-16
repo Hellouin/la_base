@@ -7,6 +7,7 @@
 C_SRCS += \
 ../Core/Src/enc28j60.c \
 ../Core/Src/freertos.c \
+../Core/Src/httpserver-netconn.c \
 ../Core/Src/main.c \
 ../Core/Src/rtos.c \
 ../Core/Src/stm32l4xx_hal_msp.c \
@@ -21,6 +22,7 @@ C_SRCS += \
 OBJS += \
 ./Core/Src/enc28j60.o \
 ./Core/Src/freertos.o \
+./Core/Src/httpserver-netconn.o \
 ./Core/Src/main.o \
 ./Core/Src/rtos.o \
 ./Core/Src/stm32l4xx_hal_msp.o \
@@ -35,6 +37,7 @@ OBJS += \
 C_DEPS += \
 ./Core/Src/enc28j60.d \
 ./Core/Src/freertos.d \
+./Core/Src/httpserver-netconn.d \
 ./Core/Src/main.d \
 ./Core/Src/rtos.d \
 ./Core/Src/stm32l4xx_hal_msp.d \
@@ -56,7 +59,7 @@ Core/Src/main.o: ../Core/Src/main.c Core/Src/subdir.mk
 clean: clean-Core-2f-Src
 
 clean-Core-2f-Src:
-	-$(RM) ./Core/Src/enc28j60.cyclo ./Core/Src/enc28j60.d ./Core/Src/enc28j60.o ./Core/Src/enc28j60.su ./Core/Src/freertos.cyclo ./Core/Src/freertos.d ./Core/Src/freertos.o ./Core/Src/freertos.su ./Core/Src/main.cyclo ./Core/Src/main.d ./Core/Src/main.o ./Core/Src/main.su ./Core/Src/rtos.cyclo ./Core/Src/rtos.d ./Core/Src/rtos.o ./Core/Src/rtos.su ./Core/Src/stm32l4xx_hal_msp.cyclo ./Core/Src/stm32l4xx_hal_msp.d ./Core/Src/stm32l4xx_hal_msp.o ./Core/Src/stm32l4xx_hal_msp.su ./Core/Src/stm32l4xx_hal_timebase_tim.cyclo ./Core/Src/stm32l4xx_hal_timebase_tim.d ./Core/Src/stm32l4xx_hal_timebase_tim.o ./Core/Src/stm32l4xx_hal_timebase_tim.su ./Core/Src/stm32l4xx_it.cyclo ./Core/Src/stm32l4xx_it.d ./Core/Src/stm32l4xx_it.o ./Core/Src/stm32l4xx_it.su ./Core/Src/syscalls.cyclo ./Core/Src/syscalls.d ./Core/Src/syscalls.o ./Core/Src/syscalls.su ./Core/Src/sysmem.cyclo ./Core/Src/sysmem.d ./Core/Src/sysmem.o ./Core/Src/sysmem.su ./Core/Src/system_stm32l4xx.cyclo ./Core/Src/system_stm32l4xx.d ./Core/Src/system_stm32l4xx.o ./Core/Src/system_stm32l4xx.su ./Core/Src/tcp_echo.cyclo ./Core/Src/tcp_echo.d ./Core/Src/tcp_echo.o ./Core/Src/tcp_echo.su ./Core/Src/test.cyclo ./Core/Src/test.d ./Core/Src/test.o ./Core/Src/test.su
+	-$(RM) ./Core/Src/enc28j60.cyclo ./Core/Src/enc28j60.d ./Core/Src/enc28j60.o ./Core/Src/enc28j60.su ./Core/Src/freertos.cyclo ./Core/Src/freertos.d ./Core/Src/freertos.o ./Core/Src/freertos.su ./Core/Src/httpserver-netconn.cyclo ./Core/Src/httpserver-netconn.d ./Core/Src/httpserver-netconn.o ./Core/Src/httpserver-netconn.su ./Core/Src/main.cyclo ./Core/Src/main.d ./Core/Src/main.o ./Core/Src/main.su ./Core/Src/rtos.cyclo ./Core/Src/rtos.d ./Core/Src/rtos.o ./Core/Src/rtos.su ./Core/Src/stm32l4xx_hal_msp.cyclo ./Core/Src/stm32l4xx_hal_msp.d ./Core/Src/stm32l4xx_hal_msp.o ./Core/Src/stm32l4xx_hal_msp.su ./Core/Src/stm32l4xx_hal_timebase_tim.cyclo ./Core/Src/stm32l4xx_hal_timebase_tim.d ./Core/Src/stm32l4xx_hal_timebase_tim.o ./Core/Src/stm32l4xx_hal_timebase_tim.su ./Core/Src/stm32l4xx_it.cyclo ./Core/Src/stm32l4xx_it.d ./Core/Src/stm32l4xx_it.o ./Core/Src/stm32l4xx_it.su ./Core/Src/syscalls.cyclo ./Core/Src/syscalls.d ./Core/Src/syscalls.o ./Core/Src/syscalls.su ./Core/Src/sysmem.cyclo ./Core/Src/sysmem.d ./Core/Src/sysmem.o ./Core/Src/sysmem.su ./Core/Src/system_stm32l4xx.cyclo ./Core/Src/system_stm32l4xx.d ./Core/Src/system_stm32l4xx.o ./Core/Src/system_stm32l4xx.su ./Core/Src/tcp_echo.cyclo ./Core/Src/tcp_echo.d ./Core/Src/tcp_echo.o ./Core/Src/tcp_echo.su ./Core/Src/test.cyclo ./Core/Src/test.d ./Core/Src/test.o ./Core/Src/test.su
 
 .PHONY: clean-Core-2f-Src
 
