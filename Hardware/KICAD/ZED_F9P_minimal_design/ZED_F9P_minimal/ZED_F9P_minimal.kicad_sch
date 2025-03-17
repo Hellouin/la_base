@@ -7923,7 +7923,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD962_TVS_3.7V"
+		(property "Footprint" "Diode_SMD:D_0805_2012Metric"
 			(at 105.41 52.07 0)
 			(effects
 				(font
@@ -9216,7 +9216,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Diode_SMD:Zener_3.6V"
+		(property "Footprint" "Diode_SMD:D_SOD-323"
 			(at 95.25 50.8 0)
 			(effects
 				(font
