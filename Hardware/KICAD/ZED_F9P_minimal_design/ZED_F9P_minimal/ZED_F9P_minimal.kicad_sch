@@ -4069,12 +4069,6 @@
 		(uuid "447c7677-2d8e-44f0-b824-2e3df996f16b")
 	)
 	(junction
-		(at 44.45 109.22)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "4ddff2bf-6206-413e-8346-fd256e1aa375")
-	)
-	(junction
 		(at 62.23 83.82)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4133,12 +4127,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "bc943986-5b1e-430c-85ec-afbd9d3f61de")
-	)
-	(junction
-		(at 44.45 111.76)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "f160e579-21f3-42cd-8620-c3d4ec4d9b18")
 	)
 	(junction
 		(at 107.95 110.49)
@@ -4343,6 +4331,16 @@
 			(type default)
 		)
 		(uuid "2905023a-b745-4b60-a231-ccf761d369e3")
+	)
+	(wire
+		(pts
+			(xy 44.45 109.22) (xy 55.88 109.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2a6cbd0e-a2a2-452b-83f5-83fe6d1548f5")
 	)
 	(wire
 		(pts
@@ -4616,26 +4614,6 @@
 	)
 	(wire
 		(pts
-			(xy 44.45 109.22) (xy 55.88 109.22)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "620d8d9e-28ca-41af-ac3b-688052b376f9")
-	)
-	(wire
-		(pts
-			(xy 43.18 111.76) (xy 44.45 111.76)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6708859f-a0d7-480c-bb90-a73e4ab7a415")
-	)
-	(wire
-		(pts
 			(xy 115.57 100.33) (xy 115.57 104.14)
 		)
 		(stroke
@@ -4886,16 +4864,6 @@
 	)
 	(wire
 		(pts
-			(xy 44.45 111.76) (xy 55.88 111.76)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "af8d0148-2563-4cb6-b52d-207ad2985abd")
-	)
-	(wire
-		(pts
 			(xy 105.41 40.64) (xy 105.41 48.26)
 		)
 		(stroke
@@ -5036,6 +5004,16 @@
 	)
 	(wire
 		(pts
+			(xy 44.45 111.76) (xy 55.88 111.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d07a920d-5ee7-4bca-b721-ec51e5384dcb")
+	)
+	(wire
+		(pts
 			(xy 44.45 106.68) (xy 53.34 106.68)
 		)
 		(stroke
@@ -5123,16 +5101,6 @@
 			(type default)
 		)
 		(uuid "ee8673ea-61b4-4419-bc58-f89344eb04f7")
-	)
-	(wire
-		(pts
-			(xy 43.18 109.22) (xy 44.45 109.22)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ef99f2eb-3644-4d18-9e40-907983695257")
 	)
 	(wire
 		(pts
@@ -6064,7 +6032,8 @@
 	)
 	(symbol
 		(lib_id "CON2x09:DF11-18DS-2DSA06")
-		(at 44.45 149.86 180)
+		(at 44.45 106.68 0)
+		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6072,7 +6041,7 @@
 		(dnp no)
 		(uuid "09c60a3e-d61d-43ae-bb2d-25c254ea072f")
 		(property "Reference" "J2"
-			(at 40.64 151.892 0)
+			(at 40.64 104.648 0)
 			(effects
 				(font
 					(size 1 1)
@@ -6080,7 +6049,7 @@
 			)
 		)
 		(property "Value" "DF11-18DS-2DSA06"
-			(at 40.386 153.924 0)
+			(at 40.386 102.616 0)
 			(effects
 				(font
 					(size 1 1)
@@ -6088,7 +6057,7 @@
 			)
 		)
 		(property "Footprint" "Connector:CON18_2X9_U_DF11_HIR"
-			(at 44.45 149.86 0)
+			(at 44.45 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6098,7 +6067,7 @@
 			)
 		)
 		(property "Datasheet" "DF11-18DS-2DSA06"
-			(at 44.45 149.86 0)
+			(at 44.45 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6108,7 +6077,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 44.45 149.86 0)
+			(at 44.45 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6117,7 +6086,7 @@
 			)
 		)
 		(property "Height" ""
-			(at 44.45 149.86 0)
+			(at 44.45 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6126,7 +6095,7 @@
 			)
 		)
 		(property "Manufacturer_Name" ""
-			(at 44.45 149.86 0)
+			(at 44.45 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6135,7 +6104,7 @@
 			)
 		)
 		(property "Manufacturer_Part_Number" ""
-			(at 44.45 149.86 0)
+			(at 44.45 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6144,7 +6113,7 @@
 			)
 		)
 		(property "Mouser Part Number" ""
-			(at 44.45 149.86 0)
+			(at 44.45 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6153,7 +6122,7 @@
 			)
 		)
 		(property "Mouser Price/Stock" ""
-			(at 44.45 149.86 0)
+			(at 44.45 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
