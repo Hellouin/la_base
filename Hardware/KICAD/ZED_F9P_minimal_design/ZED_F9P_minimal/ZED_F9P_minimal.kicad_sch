@@ -4051,12 +4051,6 @@
 		(uuid "2a920d0b-8a65-4d7f-9f21-56a05242f1de")
 	)
 	(junction
-		(at 78.74 35.56)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "2b4be463-9aec-4bc8-bfff-3a2a25004aad")
-	)
-	(junction
 		(at 105.41 40.64)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4121,6 +4115,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "b6b2d103-8e29-48b8-bbd3-769b160f15dc")
+	)
+	(junction
+		(at 63.5 52.07)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "bb934bb5-2fa2-43c8-8fb8-9c472b8a2e66")
 	)
 	(junction
 		(at 78.74 40.64)
@@ -4214,7 +4214,7 @@
 	)
 	(wire
 		(pts
-			(xy 78.74 35.56) (xy 78.74 40.64)
+			(xy 78.74 33.02) (xy 78.74 40.64)
 		)
 		(stroke
 			(width 0)
@@ -4444,16 +4444,6 @@
 	)
 	(wire
 		(pts
-			(xy 78.74 33.02) (xy 78.74 35.56)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "401f9578-da53-4d05-817d-9202b276370e")
-	)
-	(wire
-		(pts
 			(xy 44.45 134.62) (xy 53.34 134.62)
 		)
 		(stroke
@@ -4611,6 +4601,16 @@
 			(type default)
 		)
 		(uuid "5ebdd327-ff72-4362-9c03-5241b4ea4b2f")
+	)
+	(wire
+		(pts
+			(xy 63.5 52.07) (xy 67.31 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6655b159-5121-4f1b-8321-05a673d463b1")
 	)
 	(wire
 		(pts
@@ -4844,7 +4844,7 @@
 	)
 	(wire
 		(pts
-			(xy 55.88 52.07) (xy 67.31 52.07)
+			(xy 55.88 52.07) (xy 63.5 52.07)
 		)
 		(stroke
 			(width 0)
@@ -7757,7 +7757,7 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 78.74 35.56 270)
+		(at 63.5 52.07 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7765,7 +7765,7 @@
 		(dnp no)
 		(uuid "ae14a9c3-d73c-4ac3-8055-bb8f1b685ef9")
 		(property "Reference" "TP3"
-			(at 84.836 35.56 90)
+			(at 63.5 58.166 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7773,7 +7773,7 @@
 			)
 		)
 		(property "Value" "TestPoint"
-			(at 82.55 37.338 90)
+			(at 61.722 55.88 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7782,7 +7782,7 @@
 			)
 		)
 		(property "Footprint" "TestPoint:CONN1_5011_KEY"
-			(at 78.74 40.64 0)
+			(at 58.42 52.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7791,7 +7791,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 78.74 40.64 0)
+			(at 58.42 52.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7800,7 +7800,7 @@
 			)
 		)
 		(property "Description" "test point"
-			(at 78.74 35.56 0)
+			(at 63.5 52.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7809,7 +7809,7 @@
 			)
 		)
 		(property "Height" ""
-			(at 78.74 35.56 0)
+			(at 63.5 52.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7818,7 +7818,7 @@
 			)
 		)
 		(property "Manufacturer_Name" ""
-			(at 78.74 35.56 0)
+			(at 63.5 52.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7827,7 +7827,7 @@
 			)
 		)
 		(property "Manufacturer_Part_Number" ""
-			(at 78.74 35.56 0)
+			(at 63.5 52.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7836,7 +7836,7 @@
 			)
 		)
 		(property "Mouser Part Number" ""
-			(at 78.74 35.56 0)
+			(at 63.5 52.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7845,7 +7845,7 @@
 			)
 		)
 		(property "Mouser Price/Stock" ""
-			(at 78.74 35.56 0)
+			(at 63.5 52.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
