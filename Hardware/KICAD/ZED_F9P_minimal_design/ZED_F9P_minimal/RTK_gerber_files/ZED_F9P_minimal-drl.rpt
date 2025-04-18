@@ -1,0 +1,27 @@
+Drill report for ZED_F9P_minimal.kicad_pcb
+Created on 2025-04-17T15:58:33+0200
+
+Copper Layer Stackup:
+    =============================================================
+    L1 :  F.Cu                      front
+    L2 :  B.Cu                      back
+
+
+Drill file 'ZED_F9P_minimal-PTH.drl' contains
+    plated through holes:
+    =============================================================
+    T1  0,200mm  0,0079"  (38 holes)
+    T2  0,300mm  0,0118"  (308 holes)
+    T3  0,889mm  0,0350"  (8 holes)
+    T4  1,000mm  0,0394"  (3 holes)
+    T5  2,134mm  0,0840"  (5 holes)
+    T6  3,000mm  0,1181"  (4 holes)
+
+    Total plated holes count 366
+
+
+Drill file 'ZED_F9P_minimal-NPTH.drl' contains
+    unplated through holes:
+    =============================================================
+
+    Total unplated holes count 0
