@@ -4252,6 +4252,12 @@
 		(uuid "4455041a-abd8-47fd-9278-fe708b582d9f")
 	)
 	(junction
+		(at 96.52 40.64)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "46b7395d-f7b7-41a0-b30d-e876080b7fe6")
+	)
+	(junction
 		(at 62.23 83.82)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4364,6 +4370,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "e2aaf48f-5b9b-4975-b5b4-8c1246687d2e")
+	)
+	(junction
+		(at 96.52 71.12)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e9a06dfc-1472-4ea4-8335-0566a1959dd3")
 	)
 	(junction
 		(at 107.95 110.49)
@@ -4480,6 +4492,16 @@
 			(type default)
 		)
 		(uuid "0afd443a-663d-42d2-b16c-6323802bf97b")
+	)
+	(wire
+		(pts
+			(xy 96.52 54.61) (xy 96.52 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0b0ead66-5421-4f61-9bb2-0a1205f269cc")
 	)
 	(wire
 		(pts
@@ -4710,6 +4732,16 @@
 			(type default)
 		)
 		(uuid "3d61b0eb-c568-47af-9956-97e764f1cd9a")
+	)
+	(wire
+		(pts
+			(xy 96.52 71.12) (xy 100.33 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3f6c2025-8f41-474a-85df-cad702c94400")
 	)
 	(wire
 		(pts
@@ -5213,7 +5245,7 @@
 	)
 	(wire
 		(pts
-			(xy 78.74 71.12) (xy 100.33 71.12)
+			(xy 78.74 71.12) (xy 96.52 71.12)
 		)
 		(stroke
 			(width 0)
@@ -5263,7 +5295,7 @@
 	)
 	(wire
 		(pts
-			(xy 78.74 40.64) (xy 100.33 40.64)
+			(xy 78.74 40.64) (xy 96.52 40.64)
 		)
 		(stroke
 			(width 0)
@@ -5443,6 +5475,16 @@
 	)
 	(wire
 		(pts
+			(xy 96.52 40.64) (xy 100.33 40.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d53d504f-1fd9-4382-b62e-ecabc47a9d8c")
+	)
+	(wire
+		(pts
 			(xy 168.91 52.07) (xy 168.91 64.77)
 		)
 		(stroke
@@ -5540,6 +5582,16 @@
 			(type default)
 		)
 		(uuid "e6253a12-4920-425d-945b-2c2be4bd8b09")
+	)
+	(wire
+		(pts
+			(xy 96.52 46.99) (xy 96.52 40.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e772fc4e-33c3-4bab-bc62-7777979022ff")
 	)
 	(wire
 		(pts
@@ -6965,6 +7017,120 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:D_Zener")
+		(at 96.52 50.8 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "2071a340-7bc1-4a30-aeef-b84d2d47f90b")
+		(property "Reference" "D4"
+			(at 94.234 50.8 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "3.6"
+			(at 94.488 49.53 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Diode_SMD:SOD323_DIO"
+			(at 96.52 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 96.52 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Zener diode"
+			(at 96.52 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Height" ""
+			(at 96.52 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" ""
+			(at 96.52 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" ""
+			(at 96.52 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" ""
+			(at 96.52 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" ""
+			(at 96.52 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e13fa190-389e-43e6-87ae-4afb841b35f0")
+		)
+		(pin "2"
+			(uuid "1c3fbe2b-159e-489e-a434-fb0a2d25204c")
+		)
+		(instances
+			(project "ZED_F9P_minimal"
+				(path "/b6a75013-49e3-468e-8fb3-ec14dcddf343"
+					(reference "D4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:C")
 		(at 95.25 106.68 180)
 		(unit 1)
@@ -7285,7 +7451,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Inductor_SMD:L_0805_2012Metric"
+		(property "Footprint" "Inductor_SMD:IND_786110A_WRE"
 			(at 78.74 46.99 0)
 			(effects
 				(font
@@ -9792,7 +9958,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-323"
+		(property "Footprint" "Diode_SMD:SOD323_DIO"
 			(at 100.33 50.8 0)
 			(effects
 				(font
