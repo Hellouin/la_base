@@ -1,0 +1,35 @@
+from pyrtcm import RTCMMessage
+
+def decode_rtcm_frame(frame):
+    try:
+        # Décoder la trame RTCM
+        msg = RTCMMessage.parse(frame)
+        
+        if msg is None:
+            print("RTCM frame could not be parsed.")
+            return
+        
+        # Afficher les informations de la trame
+        print(f"Message Type: {msg.identity}")
+        print(f"Payload Length: {len(msg.payload)}")
+        print(f"Payload Data (hex): {msg.payload.hex()}")
+
+        # Traitement spécifique au type de message
+        if msg.identity == 1005:
+            print("RTCM Message Type 1005: Stationary RTK Reference Station ARP")
+        elif msg.identity == 1077:
+            print("RTCM Message Type 1077: GPS MSM7")
+        elif msg.identity == 1087:
+            print("RTCM Message Type 1087: GLONASS MSM7")
+        elif msg.identity == 1230:
+            print("RTCM Message Type 1230: GLONASS Code-Phase Biases")
+        else:
+            print(f"Unknown RTCM Message Type: {msg.identity}")
+
+    except Exception as e:
+        print(f"Error decoding RTCM frame: {e}")
+
+# Exemple de trame RTCM (en hex, nettoyée et condensée ici pour l'exemple)
+hex_data = "d300b43ec0003012c342b04974f6700a069fd170b008c23707fd6881623e7fe9cffea739810dfe503fd35c117951fc4087f4f7ec08af8136fe66eb002af3f9643fa55e601d7e3dcffb924d7918ffe3d9fd4e7b0173fcc9bfc0b62d5279027bafe9d41819e0987bfe6d41f4c4481700ff547cc02e082ccfe2efb4da343f6a53fa4dd6010fed33ffb9143a45c80de33fd3eab01e425aa3fcfa00ffab8014b8fe8f75ffbe042b9fe61a61d76e807b47f43c7c0800344effb4d26af1d300133ed0000389b9d1fcf2bff1502b068b2f4260db58fbc3d300153ee0000389b9d1fcf2bff1502b068b2f4260db00005bdbb3d300213f00001441532d414e54334243484f2020202020444f4d450007556e6b6e6f776e017f9fd3008a3f40004b8fc01400663ef32600c693fa7ac00e308477ff44a128bea0cfedb5fe8a9806241bd3bfe49835bbc248124dbfa4c301550511eff7858fae6053037d4fe7f480378293c3feb086e6ca15801503fa7b90176099c4ff6aa966f5f550d896fe833c042428d6bfe8ac20579de3fec66b268600c202d8c993850167ae73fd964fe8ec8800200000000034ba02d3003d3fb553f87f1e7e305700ff5cfc07d47e0385387015ea753a03de0724a1140ecca10d42fa3057ffb4f948b72d004326d1081b1dfc2b1fe981ffa2d6e8fd773958d3002d3fc11bab00ad82c2e0a23bbf92ae4fbc2bbe12221753f352dbaa51802d2647ecc043f4cfcc000000520000080051de9dd3003f4090001441532d414e54334243484f2020202020444f4d450007556e6b6e6f776e0e53455054204d4f534149432d583506342e31342e3407333831373836358b2de8d300404122c7e61de484c4e0000048d9cc3dd200123847813ace879e07098078642f893c54a29ca046270002d4e9b40f93ffc727e012ce0c456ff4504f3fee2902903c6dce34d3003f4160d4fc506b00b4d0c03ffeb7ff35d80fbf348890fb90557bcc9c00c974b43692a813c090d0c001ea7e2bc00ffe4274941c018d400312c27ffc1cf0180800909a47d300b54320003012c34200200c40a83d00000000202000007ffffea69ea68e8aa8869c9e949231904f1891a1a31b61964e6b9d907d510d6719ce77635dc78b8a3f135f861f1103e307e004f10b05e887d841d923c59c69f8f49f023e4e0735901dcf61f83188279fe2f86f8c04fe323878df83fa9f1ff160010d5984cd3e05604819a27fb3dd7f10d81a371868183f0ea47c05201df69877d55fffffffffffffffffffffe000004e9d544f05f3615be365b513be6df75d70745cfbd301264350003012c34200000c40a83d00000000202000007ffffea69ea68e8ca8889c9e969400000000000ff43dbf3c66f56683ccd1c1eea702d4013010ff18fec40d3ff45ec0855810184162ef56314bd815bd837879d2959ec8d9a27b9995ff1531f1f0e4dcc84e9b82390825d13f8809fc1d985cd588357d631dd73838b9d18c3080b1dfe0b5c47e372cfe48e2de6e5f7e6eec3e71e77e77901fe9332004c1a14bca6171c060952f60a5b43ff3cbc00424dde184bdde737f4cf39f3f979e1db67e1da272ecbb23c8d1dc7728ca3294a529ca734cd30b42b41d073d4f53bcee000004de9a5513ecf101dd53060f5a3e42de3db3d03353ee675df71dcd71edaddb8e407880af0cee1ce3a8074ff5ffec0e467890b07020e13c6ab8d48fa11ff4407c80ef535ea400018618d3008443c0004971f802002018380e0000000000208000007dffa7a7a39fa4a220260cf98c95c3cd7393e63113de29b9c2e392d934ce6e3d1ab981f48033146d0b3bbe89e086214242a82a0bc94fe1bbcfa82dc24701fa80aff01ddfa87abea8fe0c83cc394fef6c2d7d810a0206b40aed9fffffffffffffed00015d375b66bb637d5969a4538047ea5f"  # Remplacez par votre vraie trame
+rtcm_frame = bytes.fromhex(hex_data.replace(" ", ""))  # Nettoie les espaces
+decode_rtcm_frame(rtcm_frame)

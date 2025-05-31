@@ -1,0 +1,7 @@
+Carte réseau sans fil Wi-Fi :
+
+   Suffixe DNS propre à la connexion. . . :
+   Adresse IPv6 de liaison locale. . . . .: fe80::9f37:2bb5:998d:c4be%12
+   Adresse IPv4. . . . . . . . . . . . . .: 192.168.198.18
+   Masque de sous-réseau. . . . . . . . . : 255.255.255.0
+   Passerelle par défaut. . . . . . . . . : 192.168.198.193

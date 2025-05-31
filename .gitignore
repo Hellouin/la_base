@@ -40,5 +40,5 @@ Soft/FreeRTOS_HTTP_server-master
  Soft/STM32_HAL_LWIP_ENC28J60-main
  Soft/LwIP_HTTP_Server_Netconn_RTOS
  Soft/stm32f7-tcpecho-master
- Soft/
-Divers
+ Soft/UART_RTCM_datacollection
+ Soft/Caster_Ntrip/Caster_Henzo

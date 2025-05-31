@@ -1,0 +1,92 @@
+/*
+ * f9p.c
+ *
+ *  Created on: May 16, 2025
+ *      Author: hellm
+ */
+#include "f9p.h"
+#include "rtos.h"
+#include "cmsis_os.h"
+#include "stm32l4xx_hal.h"
+
+extern SemaphoreHandle_t xRxUartReceive;
+extern UART_HandleTypeDef huart1;
+extern UART_HandleTypeDef huart2;
+extern QueueHandle_t rtcmQueue;
+extern uint8_t rx_byte;
+
+#define RX_BUFFER_SIZE 64  // Size of receive buffer
+uint8_t rx_buffer[RX_BUFFER_SIZE];  // Circular buffer or temp buffer
+uint8_t rx_byte;                    // Byte used for interrupt reception
+volatile uint16_t rx_index = 0;     // Index for rx_buffer
+
+
+// create an instance for Rtcm msg
+rtcmMsg_t RtcmMsgTab[RTCM_MSG_TAB]={0}; // up to 16 Rtcm msg should be acquired  by one time
+uint8_t RtcmMsgCount = 0;
+uint8_t write_index = 0;
+/**
+  * @brief  function to handle data from F9P
+  * @param  None
+  * @retval None
+ */
+//uint8_t gpcRtcmBuffer[5012];
+status_t F9p_DataReceive(rtcmMsg_t *LocalRtcmMsgTab, uint8_t *RtcmMsgCountParam)
+{
+	uint8_t RtcmMsgCount =0;
+	uint8_t MsgAsBeenRead =0;
+	RtcmMsgCount = *RtcmMsgCountParam;
+
+	while(!HAL_UART_Receive(&huart1, &LocalRtcmMsgTab[RtcmMsgCount].pcRtcmData[0], 3, 1000))
+	{
+		taskENTER_CRITICAL();
+		// verify if it was really RTCM
+		if (LocalRtcmMsgTab[RtcmMsgCount].pcRtcmData[0] == 0xD3)
+		{
+
+			LocalRtcmMsgTab[RtcmMsgCount].wRtcmLen = ((LocalRtcmMsgTab[RtcmMsgCount].pcRtcmData[1] & 0x03) << 8)
+					| LocalRtcmMsgTab[RtcmMsgCount].pcRtcmData[2];
+
+			// get rest of msg (data +CRC)
+			HAL_UART_Receive(&huart1, &LocalRtcmMsgTab[RtcmMsgCount].pcRtcmData[3], LocalRtcmMsgTab[RtcmMsgCount].wRtcmLen +3, 2000);
+
+			// circular buffer ++ ; it's LIFO
+			RtcmMsgCount = (RtcmMsgCount > RTCM_MSG_TAB-1) ? RTCM_MSG_TAB : RtcmMsgCount + 1;
+			MsgAsBeenRead = 1;
+		}
+		taskEXIT_CRITICAL();
+	}
+	*RtcmMsgCountParam = RtcmMsgCount;
+	if (MsgAsBeenRead == 1)
+		return kStatus_Success;
+	return kStatus_Fail;
+}
+
+
+
+
+//status_t F9p_DataReceive()
+//{
+//	if (osSemaphoreWait(xRxUartReceive, osWaitForever) == osOK)
+//	{
+//		if (1)  // Check which UART triggered callback
+//			{
+//				rx_buffer[rx_index++] = rx_byte;
+//
+//		        // Wrap around if buffer is full (you could implement a circular buffer)
+//		        if (rx_index >= RX_BUFFER_SIZE)
+//		        {
+//		            rx_index = 0;
+//		            HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 0);
+//		        }
+//		        // Restart UART reception in interrupt mode for next byte
+//		        HAL_UART_Receive_IT(&huart1, &rx_byte, 1);
+//
+//		    }
+//
+//	}
+//	else { HAL_UART_Receive_IT(&huart1, &rx_byte, 1); }
+//    printf("Valeurs hex : %02X %02X %02X %02X\n\r", rx_buffer[0], rx_buffer[1], rx_buffer[2], rx_buffer[3]);
+//	return kStatus_Success;
+//}
+
