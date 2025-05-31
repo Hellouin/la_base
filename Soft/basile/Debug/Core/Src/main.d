@@ -86,7 +86,8 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/sys.h \
  ../Middlewares/Third_Party/LwIP/system/arch/sys_arch.h \
  ../Core/Inc/ethernetif.h \
- ../Middlewares/Third_Party/LwIP/src/include/lwip/tcpip.h
+ ../Middlewares/Third_Party/LwIP/src/include/lwip/tcpip.h \
+ ../Core/Inc/f9p.h
 ../Core/Inc/main.h:
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h:
 ../Core/Inc/stm32l4xx_hal_conf.h:
@@ -179,3 +180,4 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Middlewares/Third_Party/LwIP/system/arch/sys_arch.h:
 ../Core/Inc/ethernetif.h:
 ../Middlewares/Third_Party/LwIP/src/include/lwip/tcpip.h:
+../Core/Inc/f9p.h:

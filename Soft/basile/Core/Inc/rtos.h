@@ -17,4 +17,6 @@
 void StartTask01(void const * argument);
 void StartTask02(void const * argument);
 
+/* semaphore & queue */
+
 #endif /* INC_RTOS_H_ */

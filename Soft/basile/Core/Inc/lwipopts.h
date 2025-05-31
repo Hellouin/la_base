@@ -113,7 +113,7 @@ a lot of data that needs to be copied, this should be set high. */
 #define TCP_SND_QUEUELEN        (2* TCP_SND_BUF/TCP_MSS)
 
 /* TCP receive window. */
-#define TCP_WND                 (2*TCP_MSS)
+#define TCP_WND                 (4*TCP_MSS)
 
 
 /* ---------- ICMP options ---------- */
@@ -137,6 +137,33 @@ a lot of data that needs to be copied, this should be set high. */
  * whenever the link changes (i.e., link down)
  */
 #define LWIP_NETIF_LINK_CALLBACK        1
+
+/*temp*/
+
+#define LWIP_DEBUG                      0
+#define LWIP_DBG_MIN_LEVEL              LWIP_DBG_LEVEL_ALL
+#define HTTPD_DEBUG						LWIP_DBG_OFF
+#define PBUF_DEBUG                      LWIP_DBG_OFF
+#define MEMP_DEBUG                      LWIP_DBG_OFF
+
+/*
+#define TCP_DEBUG                       LWIP_DBG_ON
+#define TCP_OUTPUT_DEBUG                LWIP_DBG_ON
+#define TCP_INPUT_DEBUG                 LWIP_DBG_ON
+
+#define TCP_CWND_DEBUG                  LWIP_DBG_ON
+#define TCP_WND_DEBUG                   LWIP_DBG_ON
+#define TCP_RST_DEBUG                   LWIP_DBG_ON
+#define TCP_QLEN_DEBUG                  LWIP_DBG_ON
+#define ETHARP_DEBUG                    LWIP_DBG_ON
+#define IP_DEBUG                        LWIP_DBG_ON
+#define NETIF_DEBUG                     LWIP_DBG_ON
+
+#define API_MSG_DEBUG                   LWIP_DBG_ON
+#define SOCKETS_DEBUG                   LWIP_DBG_ON
+
+*/
+
 
 /*
    --------------------------------------

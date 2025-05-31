@@ -138,7 +138,7 @@ void Netif_Config(void)
   irq_arg.netif = &gnetif;
   irq_arg.semaphore = xSemaphore;
 
-  osThreadDef(EthernetTsk, ethernetif_process_irq, osPriorityRealtime, 0, configMINIMAL_STACK_SIZE *2);
+  osThreadDef(EthernetTsk, ethernetif_process_irq, osPriorityRealtime, 0, 1000/*configMINIMAL_STACK_SIZE *2*/);
   ethernetTaskHandleGlobal = osThreadCreate (osThread(EthernetTsk), &irq_arg);
 }
 

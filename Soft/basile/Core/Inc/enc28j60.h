@@ -389,7 +389,7 @@ typedef struct
 #define PKTMEM_END        0x1fff
 
 /* maximum transfer unit */
-#define CONFIG_NET_ETH_MTU 1500
+#define CONFIG_NET_ETH_MTU 1522 //1500 anciennement
 
 /* Packet Control Bits Definitions ******************************************/
 #define PKTCTRL_POVERRIDE (1 << 0)  /* Bit 0:  Per Packet Override */

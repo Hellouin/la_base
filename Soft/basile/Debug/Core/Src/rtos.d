@@ -45,7 +45,8 @@ Core/Src/rtos.o: ../Core/Src/rtos.c ../Core/Inc/rtos.h ../Core/Inc/tool.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h \
- ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h \
+ ../Core/Inc/f9p.h
 ../Core/Inc/rtos.h:
 ../Core/Inc/tool.h:
 ../Core/Inc/rtos.h:
@@ -96,3 +97,4 @@ Core/Src/rtos.o: ../Core/Src/rtos.c ../Core/Inc/rtos.h ../Core/Inc/tool.h \
 ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:
+../Core/Inc/f9p.h:

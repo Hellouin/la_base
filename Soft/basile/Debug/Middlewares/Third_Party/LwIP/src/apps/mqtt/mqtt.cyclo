@@ -1,3 +1,4 @@
+../Middlewares/Third_Party/LwIP/src/apps/mqtt/mqtt.c:153:1:mqtt_msg_type_to_str	2
 ../Middlewares/Third_Party/LwIP/src/apps/mqtt/mqtt.c:170:1:msg_generate_packet_id	2
 ../Middlewares/Third_Party/LwIP/src/apps/mqtt/mqtt.c:184:1:mqtt_ringbuf_put	2
 ../Middlewares/Third_Party/LwIP/src/apps/mqtt/mqtt.c:195:1:mqtt_ringbuf_get_ptr	1

@@ -11,6 +11,7 @@
 #ifndef INC_TOOL_H_
 #define INC_TOOL_H_
 
+#define DEBUG_LOG_CSL 1
 /*
  * @brief main macro function tool
  */

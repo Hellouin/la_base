@@ -30,7 +30,7 @@
 ../Middlewares/Third_Party/LwIP/src/core/ipv4/dhcp.c:1444:1:dhcp_option_byte	16	static
 ../Middlewares/Third_Party/LwIP/src/core/ipv4/dhcp.c:1452:1:dhcp_option_short	16	static
 ../Middlewares/Third_Party/LwIP/src/core/ipv4/dhcp.c:1461:1:dhcp_option_long	24	static
-../Middlewares/Third_Party/LwIP/src/core/ipv4/dhcp.c:1507:1:dhcp_parse_reply	72	static
+../Middlewares/Third_Party/LwIP/src/core/ipv4/dhcp.c:1507:1:dhcp_parse_reply	80	static
 ../Middlewares/Third_Party/LwIP/src/core/ipv4/dhcp.c:1754:1:dhcp_recv	48	static
 ../Middlewares/Third_Party/LwIP/src/core/ipv4/dhcp.c:1874:1:dhcp_create_msg	40	static
 ../Middlewares/Third_Party/LwIP/src/core/ipv4/dhcp.c:1960:1:dhcp_option_trailer	24	static

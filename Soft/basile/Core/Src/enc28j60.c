@@ -81,7 +81,7 @@ static uint8_t SPIx_TxRx(uint8_t cmd)
 	HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
   return cmd;
 }
-
+// m2s → master 2 slave, etc
 static void SPIx_TxBuf(uint8_t *m2s, uint8_t *s2m, uint16_t bufflen)
 {
 	HAL_NVIC_DisableIRQ(EXTI9_5_IRQn);
@@ -341,6 +341,7 @@ int8_t enc_prepare_txbuffer(ENC_HandleTypeDef *handle, uint16_t len)
 /* Write a buffer of data. */
 void enc_wrbuffer(void *buffer, uint16_t buflen)
 {
+
   SPIx_CS;
   SPIx_TxRx(ENC_WBM);
   SPIx_TxBuf(buffer, NULL, buflen);
@@ -366,20 +367,18 @@ void enc_transmit(ENC_HandleTypeDef *handle)
 
       /* Stop transmission */
       enc_bfcgreg(ENC_ECON1, ECON1_TXRTS);
-
       {
         uint16_t addtTsv4;
-        uint8_t tsv4, regval;
+        uint8_t tsv4, regval, *pTsvEntier;
 
         /* read tsv */
-        addtTsv4 = PKTMEM_TX_START + handle->transmitLength + 4;
+        addtTsv4 = PKTMEM_TX_START + handle->transmitLength + 1;
 
         enc_wrbreg(handle, ENC_ERDPTL, addtTsv4 & 0xff);
         enc_wrbreg(handle, ENC_ERDPTH, addtTsv4 >> 8);
 
-        enc_rdbuffer(&tsv4, 1);
         regval = enc_rdgreg(ENC_EIR);
-        if(!(regval & EIR_TXERIF) || !(tsv4 & TSV_LATECOL))
+        if(!(regval & EIR_TXERIF) 	)//|| !(tsv4 & TSV_LATECOL))
         {
           break;
         }

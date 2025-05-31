@@ -26,6 +26,7 @@
 #include "tcp_echo.h"
 #include "lwip.h"
 #include "lwip/tcpip.h"
+#include "f9p.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -36,6 +37,9 @@
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
 extern struct netif gnetif;
+extern osThreadId F9pTask_Handle;
+extern rtcmMsg_t RtcmMsgTab[RTCM_MSG_TAB];
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -46,6 +50,7 @@ extern struct netif gnetif;
 /* Private variables ---------------------------------------------------------*/
 SPI_HandleTypeDef hspi2;
 
+UART_HandleTypeDef huart1;
 UART_HandleTypeDef huart2;
 
 osThreadId defaultTaskHandle;
@@ -55,6 +60,10 @@ osStaticThreadDef_t defaultTaskControlBlock;
 
 SemaphoreHandle_t xSemaphore;
 StaticSemaphore_t xSemaphoreBuffer;
+SemaphoreHandle_t xRxUartReceive;
+QueueHandle_t rtcmQueue;
+QueueHandle_t rtcmDataQueue;
+uint8_t rx_byte = 0;
 
 osThreadId ethernetTaskHandleGlobal;
 
@@ -66,10 +75,11 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
 static void MX_SPI2_Init(void);
+static void MX_USART1_UART_Init(void);
 void StartDefaultTask(void const * argument);
 
 /* USER CODE BEGIN PFP */
-
+#define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -108,7 +118,9 @@ int main(void)
   MX_GPIO_Init();
   MX_USART2_UART_Init();
   MX_SPI2_Init();
+  MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
+  HAL_NVIC_DisableIRQ(USART1_IRQn);
 
   /* USER CODE END 2 */
 
@@ -130,19 +142,21 @@ int main(void)
 
   /* Create the thread(s) */
   /* definition and creation of defaultTask */
-  osThreadStaticDef(defaultTask, StartDefaultTask, osPriorityLow, 0, 256, defaultTaskBuffer, &defaultTaskControlBlock);
+  osThreadStaticDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 256, defaultTaskBuffer, &defaultTaskControlBlock);
   defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
   /* Semaphore to signal Ethernet Link state update */
-
-
- // xSemaphore = xSemaphoreCreateBinary();
-  //StaticSemaphore_t xSemaphoreBuffer;
-  //xSemaphore = xSemaphoreCreateBinaryStatic(&xSemaphoreBuffer);
-
+  xRxUartReceive = xSemaphoreCreateBinary();
+  rtcmQueue = xQueueCreate(1, sizeof(uint8_t));
+  rtcmDataQueue = xQueueCreate(1, sizeof(rtcmMsg_t));
+  //uint8_t *text = "lancement de l'OS temps réèl\r\n";
+  printf("basile.fw\r\n");
+  printf("lancement de l'OS temps reel\r\n");
+ // HAL_UART_Transmit(&huart2, text, 10, 1000);
   initRTOS();
+
   /* USER CODE END RTOS_THREADS */
 
   /* Start scheduler */
@@ -255,6 +269,41 @@ static void MX_SPI2_Init(void)
 }
 
 /**
+  * @brief USART1 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_USART1_UART_Init(void)
+{
+
+  /* USER CODE BEGIN USART1_Init 0 */
+
+  /* USER CODE END USART1_Init 0 */
+
+  /* USER CODE BEGIN USART1_Init 1 */
+
+  /* USER CODE END USART1_Init 1 */
+  huart1.Instance = USART1;
+  huart1.Init.BaudRate = 115200;
+  huart1.Init.WordLength = UART_WORDLENGTH_8B;
+  huart1.Init.StopBits = UART_STOPBITS_1;
+  huart1.Init.Parity = UART_PARITY_NONE;
+  huart1.Init.Mode = UART_MODE_TX_RX;
+  huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart1.Init.OverSampling = UART_OVERSAMPLING_16;
+  huart1.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
+  huart1.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
+  if (HAL_UART_Init(&huart1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN USART1_Init 2 */
+
+  /* USER CODE END USART1_Init 2 */
+
+}
+
+/**
   * @brief USART2 Initialization Function
   * @param None
   * @retval None
@@ -297,8 +346,8 @@ static void MX_USART2_UART_Init(void)
 static void MX_GPIO_Init(void)
 {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
-/* USER CODE BEGIN MX_GPIO_Init_1 */
-/* USER CODE END MX_GPIO_Init_1 */
+  /* USER CODE BEGIN MX_GPIO_Init_1 */
+  /* USER CODE END MX_GPIO_Init_1 */
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOC_CLK_ENABLE();
@@ -345,8 +394,8 @@ static void MX_GPIO_Init(void)
   HAL_NVIC_SetPriority(EXTI15_10_IRQn, 6, 0);
   HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
-/* USER CODE BEGIN MX_GPIO_Init_2 */
-/* USER CODE END MX_GPIO_Init_2 */
+  /* USER CODE BEGIN MX_GPIO_Init_2 */
+  /* USER CODE END MX_GPIO_Init_2 */
 }
 
 /* USER CODE BEGIN 4 */
@@ -360,24 +409,30 @@ static void MX_GPIO_Init(void)
 void StartTask03(void const * argument)
 {
 	taskENTER_CRITICAL();	//disable IRQ
+	 printf("task 3 start\r\n");
 	xSemaphore = xSemaphoreCreateBinaryStatic(&xSemaphoreBuffer);
+
+
 	/* Create tcp_ip stack thread */
 	tcpip_init(NULL, NULL);
 
 	/* Initialize the LwIP stack */
 	Netif_Config();
 
-	/* start App thread (tcp echo here) */
-	//tcpecho_init();
+	/* Initialize tcp client (send rtcm data)*/
+	tcpclient_init();
 
-	/* Initialize webserver demo */
+	/* Initialize webserver */
 	http_server_netconn_init();
 
+	/*F9p starting */
 	taskEXIT_CRITICAL();
+
 
 	/* infinite loop but pas trop quand même */
 	for(;;)
 	{
+		printf("task 3 kill\r\n");
 		osThreadTerminate(NULL);
 	}
 
@@ -396,7 +451,26 @@ void vApplicationStackOverflowHook(TaskHandle_t xTask, char *pcTaskName) {
     printf("Stack overflow in task: %s\n", pcTaskName);
     while (1);  // Bloque l'exécution si débordement détecté
 }
+PUTCHAR_PROTOTYPE
+{
+  /* Place your implementation of fputc here */
+  /* e.g. write a character to the USART1 and Loop until the end of transmission */
+  HAL_UART_Transmit(&huart2, (uint8_t *)&ch, 1, 0xFFFF);
 
+  return ch;
+}
+
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+	 BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+    if (huart->Instance == USART1){
+    	 xQueueSendFromISR(rtcmQueue, &rx_byte, &xHigherPriorityTaskWoken);
+    	 HAL_UART_Receive_IT(&huart1, &rx_byte, 1); // Relancer la réception
+    	 portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+    }
+
+    portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+}
 /* USER CODE END 4 */
 
 /* USER CODE BEGIN Header_StartDefaultTask */
@@ -435,7 +509,8 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
   /* USER CODE BEGIN Callback 0 */
 
   /* USER CODE END Callback 0 */
-  if (htim->Instance == TIM6) {
+  if (htim->Instance == TIM6)
+  {
     HAL_IncTick();
   }
   /* USER CODE BEGIN Callback 1 */

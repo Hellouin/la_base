@@ -1,0 +1,2 @@
+../Core/Src/f9p.c:33:10:IsRtcmTypeAccepted	24	static
+../Core/Src/f9p.c:47:10:F9p_DataReceive	40	static

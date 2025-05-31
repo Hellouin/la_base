@@ -194,50 +194,32 @@ static void http_server_serve(struct netconn *conn)
       // Is this an HTTP GET command? (only check the first 5 chars, since  there are other formats for GET, and we're keeping it very simple )
       if ((buflen >=5) && (strncmp(buf, "GET /", 5) == 0))
       {
-        // Check if request to get ST.gif
-        if (strncmp((char const *)buf,"GET /STM32F7xx_files/ST.gif",27)==0)
-        {
-          fs_open(&file, "/STM32F7xx_files/ST.gif"); 
-          netconn_write(conn, (const unsigned char*)(file.data), (size_t)file.len, NETCONN_NOCOPY);
-          fs_close(&file);
-        }   
-        // Check if request to get stm32.jpeg
-        else if (strncmp((char const *)buf,"GET /STM32F7xx_files/stm32.jpg",30)==0)
-        {
-          fs_open(&file, "/STM32F7xx_files/stm32.jpg"); 
-          netconn_write(conn, (const unsigned char*)(file.data), (size_t)file.len, NETCONN_NOCOPY);
-          fs_close(&file);
-        }
-        else if (strncmp((char const *)buf,"GET /STM32F7xx_files/logo.jpg", 29) == 0)                                           
-        {
-          // Check if request to get ST logo.jpg
-          fs_open(&file, "/STM32F7xx_files/logo.jpg"); 
-          netconn_write(conn, (const unsigned char*)(file.data), (size_t)file.len, NETCONN_NOCOPY);
-          fs_close(&file);
-        }
-        else if(strncmp(buf, "GET /STM32F7xxTASKS.html", 24) == 0)
-        {
-           // Load dynamic page
-           DynWebPage(conn);
-        }
-        else if((strncmp(buf, "GET /STM32F7xx.html", 19) == 0)||(strncmp(buf, "GET / ", 6) == 0)) 
-        {
-          // Load STM32F7xx page
-          //fs_open(&file, "/STM32F7xx.html");
-        	 fs_open(&file, "/404.html");
-        /*  uint8_t datadebug[10000];
-          memcpy(&datadebug,file.data,file.len );
-          */
-          netconn_write(conn, (const unsigned char*)(file.data), (size_t)file.len, NETCONN_NOCOPY);
-          fs_close(&file);
-        }
-        else 
-        {
-          // Load Error page
-          fs_open(&file, "/404.html"); 
-          netconn_write(conn, (const unsigned char*)(file.data), (size_t)file.len, NETCONN_NOCOPY);
-          fs_close(&file);
-        }
+    	  // it's default page
+    	  if( strncmp(buf, "GET / ", 6) == 0 )
+    	  {
+    		  taskENTER_CRITICAL();
+    		  //fs_open(&file, "/index.html");
+    		  fs_open(&file, "/fichier_mais_tres_long.html");
+    		  netconn_write(conn, (const unsigned char*)(file.data), (size_t)file.len, NETCONN_NOCOPY);
+    		  fs_close(&file);
+    		  taskEXIT_CRITICAL();
+    	  }
+    	  // else if (strncmp((char const *)buf,"GET /STM32F7xx_files/logo.jpg", 29) == 0)
+    	  else if (strncmp((char const *)buf,"GET /img/enzo_snap.jpg", 22) == 0)
+    	  {
+    		  taskENTER_CRITICAL();
+    		  //fs_open(&file, "/img/enzo_snap.jpg");
+    		  //netconn_write(conn, (const unsigned char*)(file.data), (size_t)file.len, NETCONN_NOCOPY);
+    		  //fs_close(&file);
+    		  taskEXIT_CRITICAL();
+    	  }
+    	  else
+    	  {
+    		  // Load Error page
+    		  fs_open(&file, "/404.html");
+    		  netconn_write(conn, (const unsigned char*)(file.data), (size_t)file.len, NETCONN_NOCOPY);
+    		  fs_close(&file);
+    	  }
       }      
     }
   }

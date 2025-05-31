@@ -1,0 +1,4 @@
+../Core/Src/tcpclient.c:40:13:tcpinit_thread	24	static
+../Core/Src/tcpclient.c:115:6:tcpsend	24	static
+../Core/Src/tcpclient.c:126:13:tcpsend_thread	16	static
+../Core/Src/tcpclient.c:146:6:tcpclient_init	16	static

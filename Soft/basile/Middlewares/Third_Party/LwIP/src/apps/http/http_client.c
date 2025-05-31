@@ -428,7 +428,7 @@ httpc_get_internal_addr(httpc_state_t* req, const ip_addr_t *ipaddr)
   if (err == ERR_OK) {
     return ERR_OK;
   }
-  LWIP_DEBUGF(HTTPC_DEBUG_WARN_STATE, ("tcp_connect failed: %d\n", (int)err));
+  	(HTTPC_DEBUG_WARN_STATE, ("tcp_connect failed: %d\n", (int)err));
   return err;
 }
 
